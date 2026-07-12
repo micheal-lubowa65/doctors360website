@@ -14,7 +14,7 @@ const testimonials = [
     name: 'James Okonkwo',
     role: 'Orthopedics Patient',
     image: 'https://images.pexels.com/photos/5997987/pexels-photo-5997987.jpeg?auto=compress&cs=tinysrgb&w=200',
-    quote: 'After my knee replacement, the rehabilitation team was incredible. Within three months I was back on the hiking trails. doctors360 gave me my mobility back.',
+    quote: 'After my knee injury, the rehabilitation team was incredible. Within three months I was back to full strength. Doctors360 gave me my mobility and my life back.',
     rating: 5,
   },
   {
@@ -35,10 +35,9 @@ const testimonials = [
 
 export default function Testimonials() {
   const [index, setIndex] = useState(0);
-  const [direction, setDirection] = useState<'left' | 'right'>('right');
+
 
   const go = (dir: 'left' | 'right') => {
-    setDirection(dir);
     setIndex((i) =>
       dir === 'right' ? (i + 1) % testimonials.length : (i - 1 + testimonials.length) % testimonials.length
     );
@@ -95,7 +94,7 @@ export default function Testimonials() {
                 {testimonials.map((_, i) => (
                   <button
                     key={i}
-                    onClick={() => { setDirection(i > index ? 'right' : 'left'); setIndex(i); }}
+                    onClick={() => { setIndex(i); }}
                     className={`h-2 rounded-full transition-all duration-300 ${
                       i === index ? 'w-8 bg-teal-deep' : 'w-2 bg-slate-200 hover:bg-slate-300'
                     }`}

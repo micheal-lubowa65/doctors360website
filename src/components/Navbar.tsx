@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Menu, X, Stethoscope, Phone, CalendarCheck } from 'lucide-react';
+import { Menu, X, Phone, CalendarCheck } from 'lucide-react';
 
 const links = [
   { label: 'Home', href: '#home' },
@@ -38,12 +38,14 @@ export default function Navbar() {
     >
       <nav className="container-x flex items-center justify-between">
         <a href="#home" className="flex items-center gap-2.5 group">
-          <span className="relative flex items-center justify-center w-11 h-11 rounded-2xl bg-gradient-to-br from-primary-500 to-teal-deep text-white shadow-md group-hover:scale-105 transition-transform duration-300">
-            <Stethoscope className="w-5 h-5" />
-            <span className="absolute inset-0 rounded-2xl bg-seafoam-300/0 group-hover:bg-seafoam-300/20 transition-colors duration-300" />
+          <span className="relative flex items-center justify-center w-11 h-11 group-hover:scale-105 transition-transform duration-300">
+            <img src="/doctors360logo1nobg.png" alt="Doctors360" className="w-11 h-11 object-contain" />
           </span>
-          <span className="text-xl font-bold text-primary-500 tracking-tight">
-            doctors<span className="text-teal-deep">360</span>
+          <span>
+            <span className="block text-xl font-bold text-primary-500 tracking-tight leading-tight">
+              Doctors<span className="text-teal-deep">360</span>
+            </span>
+            <span className="block text-[9px] text-slate-400 tracking-[0.14em] uppercase">Integrated medical services</span>
           </span>
         </a>
 

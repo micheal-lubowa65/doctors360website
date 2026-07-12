@@ -2,12 +2,12 @@ import { Clock, Users, Award, HeartHandshake, Activity, Lock } from 'lucide-reac
 import ScrollReveal from '../components/ScrollReveal';
 
 const features = [
-  { icon: Clock, title: '24/7 Availability', text: 'Round-the-clock emergency response and telehealth support whenever you need it.' },
-  { icon: Users, title: 'Multidisciplinary Teams', text: 'Specialists across 20+ fields collaborate on your care plan, in one place.' },
-  { icon: Award, title: 'Accredited Excellence', text: 'JCI-accredited facilities with physicians trained at top institutions worldwide.' },
-  { icon: HeartHandshake, title: 'Patient-First Approach', text: 'Every decision is made with your comfort, dignity, and outcomes at the center.' },
-  { icon: Activity, title: 'Modern Technology', text: 'Latest diagnostic and treatment equipment for faster, safer, more precise care.' },
-  { icon: Lock, title: 'Private & Secure', text: 'Your health data is protected with bank-grade encryption and strict privacy protocols.' },
+  { icon: Clock, title: '24/7 Availability', text: 'Round-the-clock emergency response and telehealth support — wherever you are across Africa.' },
+  { icon: Users, title: 'Multidisciplinary Teams', text: 'Trusted specialists across all key disciplines collaborate on your personalised 360 Care plan.' },
+  { icon: Award, title: 'Patient-Centred Ethics', text: 'Every clinical decision upholds the highest standards of medical ethics, dignity, and transparency.' },
+  { icon: HeartHandshake, title: 'Accessible Healthcare', text: 'Both digitally and physically — we bring quality care closer to patients across underserved communities.' },
+  { icon: Activity, title: 'Digital Health Innovation', text: 'Cutting-edge technology powers faster diagnostics, secure records, and seamless patient experiences.' },
+  { icon: Lock, title: 'Trust & Integrity', text: 'Your health data and personal information are handled with the utmost care, security, and respect.' },
 ];
 
 export default function WhyChooseUs() {
@@ -30,14 +30,14 @@ export default function WhyChooseUs() {
         <div className="grid lg:grid-cols-3 gap-12">
           <div className="lg:col-span-1">
             <ScrollReveal animation="fade-up">
-              <span className="section-eyebrow text-seafoam-300">Why doctors360</span>
+              <span className="section-eyebrow text-seafoam-300">Why Doctors360</span>
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-white leading-tight">
                 The difference is in the{' '}
                 <span className="gradient-text-seafoam">details</span>
               </h2>
               <p className="mt-5 text-seafoam-100 leading-relaxed">
-                We've reimagined what healthcare can be when expertise, technology, and genuine
-                compassion come together. Here's what sets us apart.
+                We have reimagined what healthcare can be when expertise, technology, and genuine
+                compassion come together across Africa. Here's what sets Doctors360 apart.
               </p>
               <a href="#contact" className="btn-secondary mt-8">
                 Experience the Difference

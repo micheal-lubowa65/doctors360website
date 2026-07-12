@@ -3,15 +3,16 @@ import { MapPin, Phone, Mail, Clock, CalendarCheck, CheckCircle2, Send } from 'l
 import ScrollReveal from '../components/ScrollReveal';
 
 const contactInfo = [
-  { icon: MapPin, label: 'Visit Us', value: '360 Wellness Avenue, Boston, MA 02115' },
-  { icon: Phone, label: 'Call Us', value: '(800) 555-0199' },
+  { icon: MapPin, label: 'Visit Us', value: 'Juba, South Sudan — serving patients across Africa' },
+  { icon: Phone, label: 'Call Us', value: '+211 927 702 808' },
   { icon: Mail, label: 'Email Us', value: 'care@doctors360.com' },
   { icon: Clock, label: 'Open Hours', value: 'Mon–Sat: 8:00 AM – 10:00 PM' },
 ];
 
 const departments = [
-  'Cardiology', 'Neurology', 'Orthopedics', 'Pediatrics',
-  'Ophthalmology', 'Psychiatry', 'Internal Medicine', 'Dermatology',
+  'General Medicine', 'Emergency Care', 'Cardiology', 'Pediatrics',
+  'Obstetrics & Gynecology', 'Orthopedics', 'Mental Health', 'Dermatology',
+  'Ophthalmology', 'Pharmacy Services', 'Laboratory Services', 'Radiology',
 ];
 
 export default function Contact() {
@@ -69,8 +70,8 @@ export default function Contact() {
             <ScrollReveal animation="fade-up" delay={400}>
               <div className="mt-8 rounded-2xl overflow-hidden shadow-xl h-56 border border-white/10">
                 <iframe
-                  title="doctors360 location"
-                  src="https://www.openstreetmap.org/export/embed.html?bbox=-71.12%2C42.34%2C-71.05%2C42.37&layer=mapnik&marker=42.35%2C-71.08"
+                  title="Doctors360 Location — Juba, South Sudan"
+                  src="https://www.openstreetmap.org/export/embed.html?bbox=31.5%2C4.8%2C31.7%2C4.9&layer=mapnik&marker=4.859363%2C31.57125"
                   className="w-full h-full"
                   style={{ filter: 'grayscale(0.3) invert(0.9) hue-rotate(180deg)' }}
                   loading="lazy"

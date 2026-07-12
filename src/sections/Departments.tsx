@@ -1,16 +1,20 @@
 import { useState } from 'react';
-import { Heart, Brain, Bone, Baby, Eye, BrainCog, Stethoscope, Syringe, ArrowRight } from 'lucide-react';
+import { Heart, Brain, Bone, Baby, Eye, BrainCog, Stethoscope, Syringe, ArrowRight, Ambulance, FlaskConical, Microscope, Pill } from 'lucide-react';
 import ScrollReveal from '../components/ScrollReveal';
 
 const departments = [
-  { icon: Heart, name: 'Cardiology', desc: 'Comprehensive heart care, from prevention to advanced interventions.', doctors: 18 },
-  { icon: Brain, name: 'Neurology', desc: 'Expert diagnosis and treatment of disorders of the brain and nervous system.', doctors: 12 },
-  { icon: Bone, name: 'Orthopedics', desc: 'Joint replacement, sports medicine, and musculoskeletal recovery.', doctors: 15 },
-  { icon: Baby, name: 'Pediatrics', desc: 'Compassionate care for infants, children, and adolescents.', doctors: 20 },
-  { icon: Eye, name: 'Ophthalmology', desc: 'Complete eye care including laser surgery and retinal treatments.', doctors: 8 },
-  { icon: BrainCog, name: 'Psychiatry', desc: 'Mental health services with therapy, counseling, and medication management.', doctors: 10 },
-  { icon: Stethoscope, name: 'Internal Medicine', desc: 'Primary care for adults with complex or chronic conditions.', doctors: 22 },
-  { icon: Syringe, name: 'Dermatology', desc: 'Skin, hair, and nail care with cosmetic and medical dermatology.', doctors: 9 },
+  { icon: Stethoscope, name: 'General Medicine', desc: 'Comprehensive primary care for all ages — prevention, diagnosis, and management of everyday health concerns.', doctors: 14 },
+  { icon: Ambulance, name: 'Emergency Care', desc: 'Rapid-response emergency services available around the clock, equipped for critical and acute conditions.', doctors: 10 },
+  { icon: Heart, name: 'Cardiology', desc: 'Comprehensive heart care from prevention and diagnostics to advanced cardiac interventions.', doctors: 8 },
+  { icon: Baby, name: 'Pediatrics', desc: 'Compassionate, evidence-based care for infants, children, and adolescents across Africa.', doctors: 12 },
+  { icon: BrainCog, name: 'Mental Health', desc: 'Holistic mental health services including counselling, therapy, and psychiatric support.', doctors: 7 },
+  { icon: Bone, name: 'Orthopedics', desc: 'Bone, joint, and musculoskeletal care including trauma management and rehabilitation.', doctors: 6 },
+  { icon: Eye, name: 'Ophthalmology', desc: 'Full-spectrum eye care — routine checks, surgical correction, and specialised retinal treatment.', doctors: 5 },
+  { icon: Syringe, name: 'Obstetrics & Gynecology', desc: 'Safe motherhood, antenatal care, skilled birth attendance, and women\'s reproductive health.', doctors: 9 },
+  { icon: Brain, name: 'Radiology & Imaging', desc: 'Digital X-ray, ultrasound, and advanced imaging to support accurate diagnosis across all departments.', doctors: 4 },
+  { icon: Microscope, name: 'Laboratory Services', desc: 'Accredited diagnostic laboratory providing rapid, reliable results for blood, urine, and pathology tests.', doctors: 6 },
+  { icon: Pill, name: 'Pharmacy Services', desc: 'In-facility and online pharmacy dispensing prescription and over-the-counter medications safely.', doctors: 5 },
+  { icon: FlaskConical, name: 'Dermatology', desc: 'Skin, hair, and nail care — treating conditions common across tropical and sub-Saharan climates.', doctors: 4 },
 ];
 
 export default function Departments() {
@@ -84,7 +88,7 @@ export default function Departments() {
                     { label: 'Specialists', value: `${departments[active].doctors}` },
                     { label: 'Procedures / yr', value: '4.2k+' },
                     { label: 'Satisfaction', value: '99%' },
-                  ].map((stat, si) => (
+                  ].map((stat) => (
                     <div key={stat.label} className="bg-white rounded-2xl p-5 text-center shadow-sm border border-slate-50 hover:shadow-md transition-shadow">
                       <p className="text-2xl font-bold gradient-text">{stat.value}</p>
                       <p className="text-xs text-slate-brand mt-1 uppercase tracking-wider">{stat.label}</p>

@@ -1,9 +1,9 @@
-import { Stethoscope, Facebook, Twitter, Instagram, Linkedin, MapPin, Phone, Mail, Send } from 'lucide-react';
+import { Facebook, Twitter, Instagram, Linkedin, MapPin, Phone, Mail, Send } from 'lucide-react';
 
 const linkGroups = [
   {
     title: 'Services',
-    links: ['Cardiology', 'Neurology', 'Pediatrics', 'Orthopedics', 'Dermatology'],
+    links: ['General Medicine', 'Emergency Care', 'Cardiology', 'Pediatrics', 'Obstetrics & Gynecology'],
   },
   {
     title: 'Company',
@@ -11,7 +11,7 @@ const linkGroups = [
   },
   {
     title: 'Patients',
-    links: ['Book Appointment', 'Patient Portal', 'Insurance', 'FAQs', 'Emergency'],
+    links: ['Book Appointment', 'Patient Portal', 'Pharmacy', 'FAQs', 'Emergency'],
   },
 ];
 
@@ -27,11 +27,14 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-2">
             <a href="#home" className="flex items-center gap-2.5 group">
-              <span className="flex items-center justify-center w-11 h-11 rounded-2xl bg-gradient-to-br from-seafoam-300 to-teal-light text-primary-500 shadow-md group-hover:scale-105 transition-transform duration-300">
-                <Stethoscope className="w-5 h-5" />
+              <span className="relative flex items-center justify-center w-11 h-11 group-hover:scale-105 transition-transform duration-300">
+                <img src="/doctors360logo1nobg.png" alt="Doctors360" className="w-11 h-11 object-contain brightness-0 invert" />
               </span>
-              <span className="text-xl font-bold tracking-tight">
-                doctors<span className="text-seafoam-300">360</span>
+              <span>
+                <span className="block text-xl font-bold tracking-tight">
+                  Doctors<span className="text-seafoam-300">360</span>
+                </span>
+                <span className="block text-[10px] text-seafoam-100 tracking-[0.15em] uppercase -mt-0.5">Integrated medical services</span>
               </span>
             </a>
             <p className="mt-4 text-seafoam-100 text-sm leading-relaxed max-w-xs">
@@ -40,10 +43,10 @@ export default function Footer() {
             </p>
             <div className="mt-6 space-y-2.5">
               <p className="flex items-center gap-2 text-sm text-seafoam-100">
-                <MapPin className="w-4 h-4 text-seafoam-300 flex-shrink-0" /> 360 Wellness Ave, Boston, MA 02115
+                <MapPin className="w-4 h-4 text-seafoam-300 flex-shrink-0" /> Juba, South Sudan
               </p>
               <p className="flex items-center gap-2 text-sm text-seafoam-100">
-                <Phone className="w-4 h-4 text-seafoam-300 flex-shrink-0" /> (800) 555-0199
+                <Phone className="w-4 h-4 text-seafoam-300 flex-shrink-0" /> +211 927 702 808
               </p>
               <p className="flex items-center gap-2 text-sm text-seafoam-100">
                 <Mail className="w-4 h-4 text-seafoam-300 flex-shrink-0" /> care@doctors360.com
@@ -90,7 +93,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="mt-10 pt-6 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-xs text-seafoam-100">
-            © {new Date().getFullYear()} doctors360 Health Systems. All rights reserved.
+            © {new Date().getFullYear()} Doctors360 Company Limited. All rights reserved.
           </p>
           <div className="flex gap-3">
             {socials.map((Icon, i) => (
