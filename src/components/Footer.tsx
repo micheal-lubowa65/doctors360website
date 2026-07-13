@@ -67,8 +67,8 @@ export default function Footer() {
               />
               <div className="h-10 w-[1.5px] bg-white/20" />
               <div className="flex flex-col justify-center leading-none">
-                <span className="text-[22px] font-bold tracking-[0.22em] text-white whitespace-nowrap">
-                  Doctors<span className="text-seafoam-300">360</span>
+                <span className="text-[22px] font-bold tracking-tight text-white whitespace-nowrap">
+                  Doctors <span className="text-seafoam-300">360</span>
                 </span>
                 <span className="text-[7.5px] text-seafoam-100 tracking-[0.115em] uppercase mt-0.5 whitespace-nowrap">
                   THE CHOICE OF A HEALTHY NATION
