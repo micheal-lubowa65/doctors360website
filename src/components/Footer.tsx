@@ -59,18 +59,21 @@ export default function Footer() {
         <div className="grid lg:grid-cols-5 gap-10">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <a href="#home" className="flex items-center gap-2.5 group">
-              <span className="relative flex items-center justify-center w-11 h-11 group-hover:scale-105 transition-transform duration-300">
-                <img src="/doctors360logo1nobg.png" alt="Doctors360" className="w-11 h-11 object-contain brightness-0 invert" />
-              </span>
-              <span className="flex flex-col items-start">
-                <span className="block text-xl font-bold tracking-tight">
+            <a href="#home" className="flex items-center gap-3 group">
+              <img 
+                src="/doctors360logo1nobg.png" 
+                alt="Doctors360" 
+                className="w-11 h-11 object-contain brightness-0 invert group-hover:scale-105 transition-transform duration-300" 
+              />
+              <div className="h-9 w-[1px] bg-white/20" />
+              <div className="flex flex-col justify-center leading-none">
+                <span className="text-xl font-bold tracking-tight text-white">
                   Doctors<span className="text-seafoam-300">360</span>
                 </span>
-                <span className="block text-[8.5px] text-seafoam-100 tracking-[0.02em] uppercase leading-[1.2] max-w-[110px] mt-0.5 whitespace-normal text-right w-full pr-[6px]">
-                  The Choice of a healthy nation
+                <span className="text-[8.5px] text-seafoam-100 tracking-[0.05em] uppercase mt-1.5 whitespace-nowrap">
+                  THE CHOICE OF A HEALTHY NATION
                 </span>
-              </span>
+              </div>
             </a>
             <p className="mt-4 text-seafoam-100 text-sm leading-relaxed max-w-xs">
               Integrated medical services and community health programs —

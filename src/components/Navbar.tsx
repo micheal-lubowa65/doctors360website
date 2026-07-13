@@ -51,18 +51,21 @@ export default function Navbar() {
       <nav className="container-x flex items-center justify-between">
 
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2.5 group flex-shrink-0">
-          <span className="relative flex items-center justify-center w-11 h-11 group-hover:scale-105 transition-transform duration-300">
-            <img src="/doctors360logo1nobg.png" alt="Doctors360" className="w-11 h-11 object-contain" />
-          </span>
-          <span className="flex flex-col items-start">
-            <span className={`block text-xl font-bold tracking-tight leading-none ${textColor}`}>
+        <Link to="/" className="flex items-center gap-3 group flex-shrink-0">
+          <img 
+            src="/doctors360logo1nobg.png" 
+            alt="Doctors360" 
+            className="w-11 h-11 object-contain group-hover:scale-105 transition-transform duration-300" 
+          />
+          <div className="h-9 w-[1px] bg-slate-300" />
+          <div className="flex flex-col justify-center leading-none">
+            <span className={`text-xl font-bold tracking-tight text-primary-500`}>
               Doctors<span className="text-teal-deep">360</span>
             </span>
-            <span className="block text-[8.5px] text-slate-400 tracking-[0.02em] uppercase leading-[1.2] max-w-[110px] mt-0.5 whitespace-normal text-right w-full pr-[6px]">
-              The Choice of a healthy nation
+            <span className="text-[8.5px] text-slate-400 tracking-[0.05em] uppercase mt-1.5 whitespace-nowrap">
+              THE CHOICE OF A HEALTHY NATION
             </span>
-          </span>
+          </div>
         </Link>
 
         {/* Desktop nav */}
