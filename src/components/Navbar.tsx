@@ -52,10 +52,10 @@ export default function Navbar() {
 
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2.5 group flex-shrink-0">
-          <img 
-            src="/doctors360logo1nobg.png" 
-            alt="Doctors360" 
-            className="w-10 h-10 object-contain group-hover:scale-105 transition-transform duration-300" 
+          <img
+            src="/doctors360logo1nobg.png"
+            alt="Doctors360"
+            className="w-10 h-10 object-contain group-hover:scale-105 transition-transform duration-300"
           />
           <div className="h-10 w-[1.5px] bg-slate-300" />
           <div className="flex flex-col justify-center leading-none">
@@ -76,9 +76,8 @@ export default function Navbar() {
                 <>
                   <button
                     onClick={(e) => { e.stopPropagation(); setDropdown(dropdown === l.href ? null : l.href); }}
-                    className={`flex items-center gap-1 px-3 py-2 text-sm font-medium rounded-full transition-all duration-300 ${
-                      pathname.startsWith(l.href) ? 'text-teal-deep bg-seafoam-50' : `${textColor} hover:text-teal-deep hover:bg-seafoam-50/50`
-                    }`}
+                    className={`flex items-center gap-1 px-3 py-2 text-sm font-medium rounded-full transition-all duration-300 ${pathname.startsWith(l.href) ? 'text-teal-deep bg-seafoam-50' : `${textColor} hover:text-teal-deep hover:bg-seafoam-50/50`
+                      }`}
                   >
                     {l.label}
                     <ChevronDown className={`w-3.5 h-3.5 transition-transform ${dropdown === l.href ? 'rotate-180' : ''}`} />
@@ -101,9 +100,8 @@ export default function Navbar() {
               ) : (
                 <Link
                   to={l.href}
-                  className={`relative px-3 py-2 text-sm font-medium rounded-full transition-all duration-300 ${
-                    pathname === l.href ? 'text-teal-deep bg-seafoam-50' : `${textColor} hover:text-teal-deep hover:bg-seafoam-50/50`
-                  }`}
+                  className={`relative px-3 py-2 text-sm font-medium rounded-full transition-all duration-300 ${pathname === l.href ? 'text-teal-deep bg-seafoam-50' : `${textColor} hover:text-teal-deep hover:bg-seafoam-50/50`
+                    }`}
                 >
                   {l.label}
                 </Link>
@@ -147,9 +145,8 @@ export default function Navbar() {
             {pageLinks.map((l) => (
               <li key={l.href}>
                 <Link to={l.href} onClick={() => setOpen(false)}
-                  className={`block px-4 py-3 rounded-xl text-base font-medium transition-colors ${
-                    pathname === l.href ? 'bg-seafoam-50 text-teal-deep' : 'text-primary-500 hover:bg-seafoam-50'
-                  }`}>
+                  className={`block px-4 py-3 rounded-xl text-base font-medium transition-colors ${pathname === l.href ? 'bg-seafoam-50 text-teal-deep' : 'text-primary-500 hover:bg-seafoam-50'
+                    }`}>
                   {l.label}
                 </Link>
               </li>

@@ -1,13 +1,83 @@
-import { ShieldCheck, HeartPulse, CalendarCheck, Star, Activity, Users, Clock } from 'lucide-react';
+import { ShieldCheck, HeartPulse, CalendarCheck, Star, Users, MapPin, Heart, CalendarDays } from 'lucide-react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import ScrollReveal from '../components/ScrollReveal';
 
 const stats = [
-  { icon: Users, value: '50K+', label: 'Patients Served' },
-  { icon: Activity, value: '120+', label: 'Expert Specialists' },
-  { icon: Clock, value: '24/7', label: 'Emergency Care' },
+  { icon: Users, value: '50K+', numericValue: 50, suffix: 'K+', label: 'Patients Served Since 2019' },
+  { icon: MapPin, value: '5', numericValue: 5, suffix: '', label: 'Communities Reached' },
+  { icon: Heart, value: '30%', numericValue: 30, suffix: '%', label: 'of Care Provided Free' },
+  { icon: CalendarDays, value: '8', numericValue: 8, suffix: '', label: 'Years in Operation' },
 ];
 
+function useCountUp(end: number, duration = 2000, startCounting = false) {
+  const [count, setCount] = useState(0);
+  const frameRef = useRef<number>();
+
+  const animate = useCallback(() => {
+    const startTime = performance.now();
+    const step = (now: number) => {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      // easeOutQuart for a satisfying deceleration
+      const eased = 1 - Math.pow(1 - progress, 4);
+      setCount(Math.round(eased * end));
+      if (progress < 1) {
+        frameRef.current = requestAnimationFrame(step);
+      }
+    };
+    frameRef.current = requestAnimationFrame(step);
+  }, [end, duration]);
+
+  useEffect(() => {
+    if (startCounting) {
+      animate();
+    }
+    return () => {
+      if (frameRef.current) cancelAnimationFrame(frameRef.current);
+    };
+  }, [startCounting, animate]);
+
+  return count;
+}
+
+function AnimatedStat({ stat, inView }: { stat: typeof stats[0]; inView: boolean }) {
+  const count = useCountUp(stat.numericValue, 2000, inView);
+
+  return (
+    <div className="flex items-center gap-3">
+      <span className="flex items-center justify-center w-10 h-10 rounded-xl bg-seafoam-100 text-teal-deep flex-shrink-0">
+        <stat.icon className="w-5 h-5" />
+      </span>
+      <div className="min-w-0">
+        <p className="text-xl font-bold text-primary-500 leading-tight tabular-nums">
+          {count}{stat.suffix}
+        </p>
+        <p className="text-xs text-slate-brand leading-snug">{stat.label}</p>
+      </div>
+    </div>
+  );
+}
+
 export default function Hero() {
+  const [statsInView, setStatsInView] = useState(false);
+  const statsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = statsRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setStatsInView(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.3 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section
       id="home"
@@ -65,49 +135,15 @@ export default function Hero() {
             </div>
           </ScrollReveal>
 
-          <ScrollReveal animation="fade-up" delay={400}>
-            <div className="mt-10 flex flex-wrap items-center gap-6">
-              <div className="flex items-center gap-2.5">
-                <div className="flex -space-x-2.5">
-                  {[
-                    '/images/avatar-1.jpg',
-                    '/images/avatar-2.jpg',
-                    '/images/avatar-3.jpg',
-                    '/images/avatar-4.jpg',
-                  ].map((src, i) => (
-                    <img
-                      key={i}
-                      src={src}
-                      alt="Patient"
-                      loading="lazy"
-                      className="w-10 h-10 rounded-full border-2 border-white object-cover shadow-sm"
-                    />
-                  ))}
-                </div>
-                <div>
-                  <div className="flex items-center gap-0.5 text-coral">
-                    {Array.from({ length: 5 }).map((_, i) => (
-                      <Star key={i} className="w-3.5 h-3.5 fill-current" />
-                    ))}
-                  </div>
-                  <p className="text-xs text-slate-brand mt-0.5">4.9/5 from 2,400+ reviews</p>
-                </div>
-              </div>
-            </div>
-          </ScrollReveal>
+
 
           <ScrollReveal animation="fade-up" delay={500}>
-            <div className="mt-8 flex flex-wrap items-center gap-6 pt-6 border-t border-slate-100">
+            <div
+              ref={statsRef}
+              className="mt-8 pt-6 border-t border-slate-100 grid grid-cols-2 gap-y-5 gap-x-6"
+            >
               {stats.map((s) => (
-                <div key={s.label} className="flex items-center gap-3">
-                  <span className="flex items-center justify-center w-10 h-10 rounded-xl bg-seafoam-100 text-teal-deep">
-                    <s.icon className="w-5 h-5" />
-                  </span>
-                  <div>
-                    <p className="text-xl font-bold text-primary-500">{s.value}</p>
-                    <p className="text-xs text-slate-brand">{s.label}</p>
-                  </div>
-                </div>
+                <AnimatedStat key={s.label} stat={s} inView={statsInView} />
               ))}
             </div>
           </ScrollReveal>
