@@ -64,7 +64,7 @@ export default function Services() {
                 <div className={`absolute inset-0 bg-gradient-to-br ${s.accent} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
 
                 <div className="relative">
-                  <span className={`flex items-center justify-center w-14 h-14 rounded-2xl ${s.iconBg} mb-5 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-500`}>
+                  <span className={`flex items-center justify-center w-14 h-14 rounded-2xl ${s.iconBg} mb-5 mx-auto sm:mx-0 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-500`}>
                     <s.icon className="w-7 h-7" />
                   </span>
                   <h3 className="text-xl font-semibold text-primary-500">{s.title}</h3>

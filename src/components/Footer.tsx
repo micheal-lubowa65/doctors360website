@@ -1,6 +1,20 @@
 import { Link } from 'react-router-dom';
 import { Facebook, Twitter, Instagram, Linkedin, MapPin, Phone, Mail, Send } from 'lucide-react';
 
+const TiktokIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    {...props}
+  >
+    <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+  </svg>
+);
+
 const linkGroups = [
   {
     title: 'Medical Services',
@@ -34,7 +48,7 @@ const linkGroups = [
   },
 ];
 
-const socials = [Facebook, Twitter, Instagram, Linkedin];
+const socials = [Facebook, Twitter, Instagram, Linkedin, TiktokIcon];
 
 export default function Footer() {
   return (
@@ -104,13 +118,13 @@ export default function Footer() {
             <h4 className="font-semibold text-white">Stay informed</h4>
             <p className="text-sm text-seafoam-100 mt-1">Health tips and updates, straight to your inbox.</p>
           </div>
-          <form className="flex gap-2 w-full md:w-auto" onSubmit={(e) => e.preventDefault()}>
+          <form className="flex flex-col sm:flex-row gap-2 w-full md:w-auto" onSubmit={(e) => e.preventDefault()}>
             <input
               type="email"
               placeholder="Enter your email"
-              className="flex-1 md:w-72 px-4 py-2.5 rounded-full bg-white/10 border border-white/15 text-white placeholder-seafoam-100/60 focus:border-seafoam-300 focus:ring-2 focus:ring-seafoam-300/20 outline-none transition-all"
+              className="flex-1 md:w-72 px-5 py-2.5 rounded-full bg-white/10 border border-white/15 text-white placeholder-seafoam-100/60 focus:border-seafoam-300 focus:ring-2 focus:ring-seafoam-300/20 outline-none transition-all"
             />
-            <button className="btn-secondary whitespace-nowrap">
+            <button className="btn-secondary whitespace-nowrap w-full sm:w-auto justify-center">
               <Send className="w-4 h-4" />
               Subscribe
             </button>

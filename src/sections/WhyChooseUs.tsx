@@ -49,7 +49,7 @@ export default function WhyChooseUs() {
             {features.map((f, i) => (
               <ScrollReveal key={f.title} animation="fade-up" delay={i * 80}>
                 <div className="group glass-card p-6 hover:bg-white/12 hover:border-seafoam-300/40 transition-all duration-400 h-full">
-                  <span className="flex items-center justify-center w-12 h-12 rounded-xl bg-seafoam-300 text-primary-500 mb-4 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300">
+                  <span className="flex items-center justify-center w-12 h-12 rounded-xl bg-seafoam-300 text-primary-500 mb-4 mx-auto sm:mx-0 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300">
                     <f.icon className="w-6 h-6" />
                   </span>
                   <h3 className="text-lg font-semibold text-white">{f.title}</h3>

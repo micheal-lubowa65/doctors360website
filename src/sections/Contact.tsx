@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { MapPin, Phone, Mail, Clock, CalendarCheck, CheckCircle2, Send } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock, CalendarCheck, CheckCircle2, Send, Navigation } from 'lucide-react';
 import ScrollReveal from '../components/ScrollReveal';
 
 const contactInfo = [
@@ -71,11 +71,22 @@ export default function Contact() {
               <div className="mt-8 rounded-2xl overflow-hidden shadow-xl h-56 border border-white/10">
                 <iframe
                   title="Doctors360 Location — Juba, South Sudan"
-                  src="https://www.openstreetmap.org/export/embed.html?bbox=31.5%2C4.8%2C31.7%2C4.9&layer=mapnik&marker=4.859363%2C31.57125"
-                  className="w-full h-full"
+                  src="https://maps.google.com/maps?q=4.859363,31.57125&t=&z=14&ie=UTF8&iwloc=&output=embed"
+                  className="w-full h-full border-0"
                   style={{ filter: 'grayscale(0.3) invert(0.9) hue-rotate(180deg)' }}
                   loading="lazy"
                 />
+              </div>
+              <div className="mt-4 flex justify-center sm:justify-start">
+                <a
+                  href="https://www.google.com/maps/dir/?api=1&destination=4.859363,31.57125"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-secondary flex items-center gap-2 text-sm"
+                >
+                  <Navigation className="w-4 h-4" />
+                  Navigate to Doctors360
+                </a>
               </div>
             </ScrollReveal>
           </div>

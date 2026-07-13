@@ -55,7 +55,7 @@ export default function Hero() {
           </ScrollReveal>
 
           <ScrollReveal animation="fade-up" delay={300}>
-            <div className="mt-8 flex flex-wrap gap-4">
+            <div className="mt-8 flex flex-wrap gap-4 justify-center lg:justify-start">
               <a href="#contact" className="btn-primary">
                 <CalendarCheck className="w-5 h-5" />
                 Book an Appointment

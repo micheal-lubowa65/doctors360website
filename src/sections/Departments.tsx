@@ -96,7 +96,7 @@ export default function Departments() {
                   ))}
                 </div>
 
-                <div className="mt-8 flex flex-wrap gap-4">
+                <div className="mt-8 flex flex-wrap gap-4 justify-center sm:justify-start">
                   <a href="#contact" className="btn-primary">
                     Book a Consultation
                     <ArrowRight className="w-4 h-4" />
