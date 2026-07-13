@@ -59,10 +59,10 @@ export default function Navbar() {
           />
           <div className="h-9 w-[1px] bg-slate-300" />
           <div className="flex flex-col justify-center leading-none">
-            <span className={`text-xl font-bold tracking-[0.12em] text-primary-500`}>
-              Doctors <span className="text-teal-deep">360</span>
+            <span className={`text-xl font-bold tracking-tight text-primary-500`}>
+              Doctors<span className="text-teal-deep">360</span>
             </span>
-            <span className="text-[8.5px] text-slate-400 tracking-[0.05em] uppercase mt-1.5 whitespace-nowrap">
+            <span className="text-[6.5px] text-slate-400 tracking-normal uppercase mt-1 whitespace-nowrap">
               THE CHOICE OF A HEALTHY NATION
             </span>
           </div>

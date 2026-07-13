@@ -67,10 +67,10 @@ export default function Footer() {
               />
               <div className="h-9 w-[1px] bg-white/20" />
               <div className="flex flex-col justify-center leading-none">
-                <span className="text-xl font-bold tracking-[0.12em] text-white">
-                  Doctors <span className="text-seafoam-300">360</span>
+                <span className="text-xl font-bold tracking-tight text-white">
+                  Doctors<span className="text-seafoam-300">360</span>
                 </span>
-                <span className="text-[8.5px] text-seafoam-100 tracking-[0.05em] uppercase mt-1.5 whitespace-nowrap">
+                <span className="text-[6.5px] text-seafoam-100 tracking-normal uppercase mt-1 whitespace-nowrap">
                   THE CHOICE OF A HEALTHY NATION
                 </span>
               </div>
