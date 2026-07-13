@@ -62,7 +62,7 @@ export default function Navbar() {
             <span className="text-[22px] font-bold tracking-tight text-primary-500 whitespace-nowrap">
               Doctors <span className="text-teal-deep">360</span>
             </span>
-            <span className="text-[7.5px] text-slate-400 tracking-[0.115em] uppercase mt-0.5 whitespace-nowrap">
+            <span className="text-[6px] text-slate-400 tracking-[0.1em] uppercase mt-0.5 whitespace-nowrap">
               THE CHOICE OF A HEALTHY NATION
             </span>
           </div>

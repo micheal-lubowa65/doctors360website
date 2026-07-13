@@ -70,7 +70,7 @@ export default function Footer() {
                 <span className="text-[22px] font-bold tracking-tight text-white whitespace-nowrap">
                   Doctors <span className="text-seafoam-300">360</span>
                 </span>
-                <span className="text-[7.5px] text-seafoam-100 tracking-[0.115em] uppercase mt-0.5 whitespace-nowrap">
+                <span className="text-[6px] text-seafoam-100 tracking-[0.1em] uppercase mt-0.5 whitespace-nowrap">
                   THE CHOICE OF A HEALTHY NATION
                 </span>
               </div>
