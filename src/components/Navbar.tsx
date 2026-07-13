@@ -57,12 +57,12 @@ export default function Navbar() {
             alt="Doctors360" 
             className="w-11 h-11 object-contain group-hover:scale-105 transition-transform duration-300" 
           />
-          <div className="h-11 w-[1px] bg-slate-300" />
+          <div className="h-9 w-[1px] bg-slate-300" />
           <div className="flex flex-col justify-center leading-none">
-            <span className={`text-[30px] font-bold tracking-tight text-primary-500`}>
+            <span className={`text-xl font-bold tracking-tight text-primary-500`}>
               Doctors<span className="text-teal-deep">360</span>
             </span>
-            <span className="text-[8.5px] text-slate-400 tracking-[0.12em] uppercase mt-1 whitespace-nowrap">
+            <span className="text-[6.5px] text-slate-400 tracking-[0.08em] uppercase mt-1 whitespace-nowrap">
               THE CHOICE OF A HEALTHY NATION
             </span>
           </div>
