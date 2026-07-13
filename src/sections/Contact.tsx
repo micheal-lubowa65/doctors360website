@@ -77,7 +77,7 @@ export default function Contact() {
                   loading="lazy"
                 />
               </div>
-              <div className="mt-4 flex justify-center sm:justify-start">
+              <div className="mt-4 flex justify-start lg:justify-center">
                 <a
                   href="https://www.google.com/maps/dir/?api=1&destination=4.859363,31.57125"
                   target="_blank"
