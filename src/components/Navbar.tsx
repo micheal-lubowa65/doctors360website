@@ -53,7 +53,7 @@ export default function Navbar() {
         {/* Logo */}
         <Link to="/" className="flex flex-col justify-center items-start group flex-shrink-0">
           <img 
-            src="/doctors360logo2nobgnomc.png" 
+            src="/doctors360logo2nobgnomc-Photoroom.png" 
             alt="Doctors360" 
             className="h-10 w-auto object-contain group-hover:scale-105 transition-transform duration-300" 
           />

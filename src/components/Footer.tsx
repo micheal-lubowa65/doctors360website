@@ -61,7 +61,7 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <a href="#home" className="flex flex-col justify-center items-start group">
               <img 
-                src="/doctors360logo2nobgnomc.png" 
+                src="/doctors360logo2nobgnomc-Photoroom.png" 
                 alt="Doctors360" 
                 className="h-10 w-auto object-contain brightness-0 invert group-hover:scale-105 transition-transform duration-300" 
               />
