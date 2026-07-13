@@ -59,21 +59,15 @@ export default function Footer() {
         <div className="grid lg:grid-cols-5 gap-10">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <a href="#home" className="flex items-center gap-3 group">
+            <a href="#home" className="flex flex-col justify-center items-start group">
               <img 
-                src="/doctors360logo1nobg.png" 
+                src="/doctors360logo2nobgnomc.png" 
                 alt="Doctors360" 
-                className="w-11 h-11 object-contain brightness-0 invert group-hover:scale-105 transition-transform duration-300" 
+                className="h-10 w-auto object-contain brightness-0 invert group-hover:scale-105 transition-transform duration-300" 
               />
-              <div className="h-9 w-[1px] bg-white/20" />
-              <div className="flex flex-col justify-center leading-none">
-                <span className="text-xl font-bold tracking-tight text-white">
-                  Doctors<span className="text-seafoam-300">360</span>
-                </span>
-                <span className="text-[6.5px] text-seafoam-100 tracking-[0.08em] uppercase mt-1 whitespace-nowrap">
-                  THE CHOICE OF A HEALTHY NATION
-                </span>
-              </div>
+              <span className="text-[6.5px] text-seafoam-100 tracking-[0.08em] uppercase mt-0.5 whitespace-nowrap ml-[3.5rem]">
+                THE CHOICE OF A HEALTHY NATION
+              </span>
             </a>
             <p className="mt-4 text-seafoam-100 text-sm leading-relaxed max-w-xs">
               Integrated medical services and community health programs —
