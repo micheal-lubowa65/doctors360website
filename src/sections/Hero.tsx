@@ -41,7 +41,7 @@ function useCountUp(end: number, duration = 2000, startCounting = false) {
 }
 
 function AnimatedStat({ stat, inView }: { stat: typeof stats[0]; inView: boolean }) {
-  const count = useCountUp(stat.numericValue, 2000, inView);
+  const count = useCountUp(stat.numericValue, 8000, inView);
 
   return (
     <div className="flex items-center gap-3">
