@@ -37,7 +37,7 @@ export default function ProgramsMap() {
           <Geographies geography={geoUrl}>
             {({ geographies }) =>
               geographies.map((geo) => {
-                const isOperatingCountry = ['South Sudan', 'Uganda'].includes(
+                const isOperatingCountry = ['South Sudan', 'S. Sudan', 'Uganda'].includes(
                   geo.properties.name
                 );
 

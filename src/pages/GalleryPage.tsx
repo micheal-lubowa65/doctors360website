@@ -1,83 +1,79 @@
-﻿import { useState } from 'react';
+import { useState } from 'react';
 import ScrollReveal from '../components/ScrollReveal';
 import { X, ZoomIn } from 'lucide-react';
 
 const photoGallery = [
   {
-    src: '/images/programs-1.jpg',
-    thumb: '/images/programs-1.jpg',
-    caption: 'Community health outreach clinic, South Sudan',
-    category: 'Outreach',
-  },
-  {
-    src: '/images/about-1.jpg',
-    thumb: '/images/about-1.jpg',
-    caption: 'Medical team consultations at Doctors360 facility',
+    src: '/images/Medical centre Doctor360/medical centre 1 doctors360.jpeg',
+    thumb: '/images/Medical centre Doctor360/medical centre 1 doctors360.jpeg',
+    caption: 'State-of-the-art Medical Centre Facility',
     category: 'Medical Centre',
   },
   {
-    src: '/images/programs-2.jpg',
-    thumb: '/images/programs-2.jpg',
-    caption: 'Health education session for community members',
-    category: 'Outreach',
+    src: '/images/Medical centre Doctor360/medical centre 2 doctors360.jpg',
+    thumb: '/images/Medical centre Doctor360/medical centre 2 doctors360.jpg',
+    caption: 'Patient Care at Doctors360',
+    category: 'Medical Centre',
+    whiteBg: true,
   },
   {
-    src: '/images/programs-3.jpg',
-    thumb: '/images/programs-3.jpg',
-    caption: 'Community health worker training graduation ceremony',
-    category: 'Training',
-  },
-  {
-    src: '/images/news-2.jpg',
-    thumb: '/images/news-2.jpg',
-    caption: 'Antenatal care services for expectant mothers',
+    src: '/images/Medical centre Doctor360/medical centre 3 doctors360.jpeg',
+    thumb: '/images/Medical centre Doctor360/medical centre 3 doctors360.jpeg',
+    caption: 'Advanced Medical Diagnostics',
     category: 'Medical Centre',
   },
   {
-    src: '/images/leader-1.jpg',
-    thumb: '/images/leader-1.jpg',
-    caption: 'Dr. Emmanuel Lado at the Doctors360 Emergency Department',
-    category: 'Medical Centre',
-  },
-  {
-    src: '/images/about-2.jpg',
-    thumb: '/images/about-2.jpg',
-    caption: 'Patient care and recovery at our facility',
-    category: 'Medical Centre',
-  },
-  {
-    src: '/images/news-3.jpg',
-    thumb: '/images/news-3.jpg',
-    caption: 'Mental health counselling services',
-    category: 'Medical Centre',
-  },
-  {
-    src: '/images/programs-4.jpg',
-    thumb: '/images/programs-4.jpg',
-    caption: 'Partnership meeting with international health agencies',
+    src: '/images/partnerships Doctors360/partner 1 Doctor360.jpeg',
+    thumb: '/images/partnerships Doctors360/partner 1 Doctor360.jpeg',
+    caption: 'Global Health Partner',
     category: 'Partnerships',
+    whiteBg: true,
   },
   {
-    src: '/images/leader-2.jpg',
-    thumb: '/images/leader-2.jpg',
-    caption: 'Dr. Amina Wek conducting patient rounds',
-    category: 'Medical Centre',
+    src: '/images/partnerships Doctors360/partner 2 Doctor360.jpeg',
+    thumb: '/images/partnerships Doctors360/partner 2 Doctor360.jpeg',
+    caption: 'Strategic Healthcare Alliance',
+    category: 'Partnerships',
+    whiteBg: true,
   },
   {
-    src: '/images/news-1.jpg',
-    thumb: '/images/news-1.jpg',
-    caption: 'Malaria prevention outreach campaign',
-    category: 'Outreach',
+    src: '/images/partnerships Doctors360/partner 3 Doctor360.jpeg',
+    thumb: '/images/partnerships Doctors360/partner 3 Doctor360.jpeg',
+    caption: 'Community Medical Initiative',
+    category: 'Partnerships',
+    whiteBg: true,
   },
   {
-    src: '/images/news-5.jpg',
-    thumb: '/images/news-5.jpg',
-    caption: 'Child nutrition screening and supplementation program',
-    category: 'Outreach',
+    src: '/images/partnerships Doctors360/partner 4 Doctor360.jpeg',
+    thumb: '/images/partnerships Doctors360/partner 4 Doctor360.jpeg',
+    caption: 'Healthcare Infrastructure Partner',
+    category: 'Partnerships',
+    whiteBg: true,
+  },
+  {
+    src: '/images/partnerships Doctors360/partner 5 Doctor360.jpeg',
+    thumb: '/images/partnerships Doctors360/partner 5 Doctor360.jpeg',
+    caption: 'Regional Development Fund',
+    category: 'Partnerships',
+    whiteBg: true,
+  },
+  {
+    src: '/images/partnerships Doctors360/partner 6 Doctor360.jpeg',
+    thumb: '/images/partnerships Doctors360/partner 6 Doctor360.jpeg',
+    caption: 'Medical Research Council',
+    category: 'Partnerships',
+    whiteBg: true,
+  },
+  {
+    src: '/images/partnerships Doctors360/partner 7 Doctor360.jpeg',
+    thumb: '/images/partnerships Doctors360/partner 7 Doctor360.jpeg',
+    caption: 'International Aid Organization',
+    category: 'Partnerships',
+    whiteBg: true,
   },
 ];
 
-const galleryCategories = ['All', 'Medical Centre', 'Outreach', 'Training', 'Partnerships'];
+const galleryCategories = ['All', 'Partnerships', 'Medical Centre'];
 
 export default function GalleryPage() {
   const [filter, setFilter] = useState('All');
@@ -123,27 +119,35 @@ export default function GalleryPage() {
         </div>
       </section>
 
-      {/* Masonry-style grid */}
-      <section className="py-12 lg:py-16">
+      {/* Uniform Grid */}
+      <section className="py-12 lg:py-16 bg-slate-50">
         <div className="container-x">
-          <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {filtered.map((photo, i) => (
               <ScrollReveal key={photo.src} animation="fade-up" delay={i * 50}>
                 <button
                   onClick={() => setLightbox(photo)}
-                  className="group relative block w-full overflow-hidden rounded-2xl shadow-md hover:shadow-xl transition-all duration-400 break-inside-avoid"
+                  className={`group relative block w-full overflow-hidden rounded-3xl shadow-sm hover:shadow-xl transition-all duration-400 aspect-square ${
+                    photo.whiteBg ? 'bg-white p-6 md:p-8 flex items-center justify-center border border-slate-100' : 'bg-slate-100'
+                  }`}
                 >
                   <img
                     src={photo.thumb}
                     alt={photo.caption}
                     loading="lazy"
-                    className="w-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    className={`w-full h-full transition-transform duration-700 ${
+                      photo.whiteBg 
+                        ? 'object-contain mix-blend-multiply group-hover:scale-110' 
+                        : 'object-cover group-hover:scale-105'
+                    }`}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary-700/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-end pb-4 px-4">
-                    <ZoomIn className="w-8 h-8 text-white mb-2 drop-shadow-lg" />
-                    <p className="text-white text-sm font-medium text-center drop-shadow-md">{photo.caption}</p>
-                  </div>
-                  <span className="absolute top-3 right-3 px-2 py-0.5 rounded-full bg-black/40 text-white text-[10px] font-semibold backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity">
+                  {!photo.whiteBg && (
+                    <div className="absolute inset-0 bg-gradient-to-t from-primary-700/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-end pb-4 px-4">
+                      <ZoomIn className="w-8 h-8 text-white mb-2 drop-shadow-lg" />
+                      <p className="text-white text-sm font-medium text-center drop-shadow-md">{photo.caption}</p>
+                    </div>
+                  )}
+                  <span className="absolute top-4 right-4 px-2 py-0.5 rounded-full bg-black/50 text-white text-[10px] font-semibold backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity">
                     {photo.category}
                   </span>
                 </button>
@@ -156,22 +160,24 @@ export default function GalleryPage() {
       {/* Lightbox */}
       {lightbox && (
         <div
-          className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4 animate-fade-up"
+          className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4 animate-fade-up backdrop-blur-sm"
           onClick={() => setLightbox(null)}
         >
           <button
             onClick={() => setLightbox(null)}
-            className="absolute top-4 right-4 flex items-center justify-center w-10 h-10 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors"
+            className="absolute top-4 right-4 flex items-center justify-center w-12 h-12 rounded-full bg-white/10 text-white hover:bg-white/20 hover:scale-110 transition-all"
           >
-            <X className="w-5 h-5" />
+            <X className="w-6 h-6" />
           </button>
-          <div className="max-w-4xl w-full" onClick={(e) => e.stopPropagation()}>
+          <div className="max-w-5xl w-full flex flex-col items-center" onClick={(e) => e.stopPropagation()}>
             <img
               src={lightbox.src}
               alt={lightbox.caption}
-              className="w-full rounded-2xl shadow-2xl object-contain max-h-[80vh]"
+              className={`w-full rounded-2xl object-contain max-h-[75vh] ${
+                lightbox.whiteBg ? 'bg-white p-8 mix-blend-normal' : 'shadow-2xl'
+              }`}
             />
-            <p className="mt-4 text-center text-seafoam-100 text-sm">{lightbox.caption}</p>
+            <p className="mt-6 text-center text-white font-medium text-lg bg-black/40 px-6 py-2 rounded-full backdrop-blur-md">{lightbox.caption}</p>
           </div>
         </div>
       )}

@@ -185,7 +185,7 @@ export default function ProgramsPage() {
             <ScrollReveal animation="fade-right">
               <span className="section-eyebrow text-seafoam-300">Where We Work</span>
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-white leading-tight">
-                Active across <span className="gradient-text-seafoam">East & Central Africa</span>
+                Active across <span className="gradient-text-seafoam">East Africa</span>
               </h2>
               <p className="mt-5 text-seafoam-100 leading-relaxed">
                 Our programs are currently active in South Sudan and Uganda. We are expanding

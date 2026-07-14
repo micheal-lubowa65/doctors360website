@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import { MapPin, Phone, Mail, Clock, CalendarCheck, CheckCircle2, Send, Navigation } from 'lucide-react';
 import ScrollReveal from '../components/ScrollReveal';
+import { MapContainer, TileLayer, Marker } from 'react-leaflet';
+import L from 'leaflet';
+import 'leaflet/dist/leaflet.css';
 
 const contactInfo = [
   { icon: MapPin, label: 'Visit Us', value: 'Juba, South Sudan — serving patients across Africa' },
@@ -15,14 +18,44 @@ const departments = [
   'Ophthalmology', 'Pharmacy Services', 'Laboratory Services', 'Radiology',
 ];
 
+const position: [number, number] = [4.859363, 31.57125];
+
+const customIcon = L.divIcon({
+  className: 'custom-leaflet-icon',
+  html: `
+    <div class="relative flex items-center justify-center w-8 h-8">
+      <div class="absolute w-full h-full rounded-full bg-teal-500 animate-ping opacity-60"></div>
+      <div class="w-3.5 h-3.5 rounded-full bg-teal-600 shadow-[0_0_12px_rgba(13,148,136,0.9)] border-2 border-white"></div>
+    </div>
+  `,
+  iconSize: [32, 32],
+  iconAnchor: [16, 16],
+});
+
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
-  const [form, setForm] = useState({
-    name: '', email: '', phone: '', department: '', date: '', message: '',
+  const [form, setForm] = useState<{
+    name: string;
+    email: string;
+    phone: string;
+    services: string[];
+    date: string;
+    message: string;
+  }>({
+    name: '', email: '', phone: '', services: [], date: '', message: '',
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleServiceChange = (service: string) => {
+    setForm(prev => {
+      const services = prev.services.includes(service)
+        ? prev.services.filter(s => s !== service)
+        : [...prev.services, service];
+      return { ...prev, services };
+    });
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -68,16 +101,21 @@ export default function Contact() {
             </div>
 
             <ScrollReveal animation="fade-up" delay={400}>
-              <div className="mt-8 rounded-2xl overflow-hidden shadow-xl h-56 border border-white/10">
-                <iframe
-                  title="Doctors360 Location — Juba, South Sudan"
-                  src="https://maps.google.com/maps?q=4.859363,31.57125&t=&z=14&ie=UTF8&iwloc=&output=embed"
-                  className="w-full h-full border-0"
-                  style={{ filter: 'grayscale(0.3) invert(0.9) hue-rotate(180deg)' }}
-                  loading="lazy"
-                />
+              <div className="mt-8 rounded-2xl overflow-hidden shadow-xl h-64 border border-white/10 relative z-10">
+                <MapContainer 
+                  center={position} 
+                  zoom={14} 
+                  className="w-full h-full bg-slate-100 outline-none"
+                  scrollWheelZoom={false}
+                >
+                  <TileLayer
+                    attribution='&copy; <a href="https://maps.google.com/">Google Maps</a>'
+                    url="https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}"
+                  />
+                  <Marker position={position} icon={customIcon} />
+                </MapContainer>
               </div>
-              <div className="mt-4 flex justify-center lg:justify-center">
+              <div className="mt-4 flex justify-center lg:justify-center relative z-20">
                 <a
                   href="https://www.google.com/maps/dir/?api=1&destination=4.859363,31.57125"
                   target="_blank"
@@ -93,7 +131,7 @@ export default function Contact() {
 
           {/* Right: form */}
           <ScrollReveal animation="fade-left" delay={200}>
-            <div className="bg-white rounded-3xl p-8 lg:p-10 shadow-2xl">
+            <div className="bg-white rounded-3xl p-8 lg:p-10 shadow-2xl relative z-20">
               {submitted ? (
                 <div className="h-full flex flex-col items-center justify-center text-center py-16">
                   <span className="flex items-center justify-center w-20 h-20 rounded-full bg-seafoam-100 text-teal-deep mb-6 animate-pulse-ring">
@@ -107,7 +145,7 @@ export default function Contact() {
                   <button
                     onClick={() => {
                       setSubmitted(false);
-                      setForm({ name: '', email: '', phone: '', department: '', date: '', message: '' });
+                      setForm({ name: '', email: '', phone: '', services: [], date: '', message: '' });
                     }}
                     className="btn-outline mt-8"
                   >
@@ -145,33 +183,38 @@ export default function Contact() {
                         />
                       </div>
                     </div>
+                    
                     <div>
-                      <label className="text-sm font-medium text-primary-500">Email</label>
-                      <input
-                        required
-                        type="email"
-                        name="email"
-                        value={form.email}
-                        onChange={handleChange}
-                        className="mt-1 w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:border-teal-light focus:ring-2 focus:ring-teal-light/20 outline-none transition-all"
-                        placeholder="jane@example.com"
-                      />
+                      <label className="text-sm font-medium text-primary-500 block mb-2">Services Required</label>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-2 bg-slate-50 p-4 rounded-xl border border-slate-200">
+                        {departments.map((d) => (
+                          <label key={d} className="flex items-start gap-2 cursor-pointer group p-1.5 hover:bg-white rounded-lg transition-colors">
+                            <input
+                              type="checkbox"
+                              checked={form.services.includes(d)}
+                              onChange={() => handleServiceChange(d)}
+                              className="mt-0.5 w-4 h-4 text-teal-500 rounded border-slate-300 focus:ring-teal-500/30 transition-all cursor-pointer accent-teal-500"
+                            />
+                            <span className="text-sm text-slate-600 group-hover:text-primary-500 transition-colors leading-tight">
+                              {d}
+                            </span>
+                          </label>
+                        ))}
+                      </div>
                     </div>
+
                     <div className="grid sm:grid-cols-2 gap-4">
                       <div>
-                        <label className="text-sm font-medium text-primary-500">Department</label>
-                        <select
+                        <label className="text-sm font-medium text-primary-500">Email</label>
+                        <input
                           required
-                          name="department"
-                          value={form.department}
+                          type="email"
+                          name="email"
+                          value={form.email}
                           onChange={handleChange}
-                          className="mt-1 w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:border-teal-light focus:ring-2 focus:ring-teal-light/20 outline-none transition-all bg-white"
-                        >
-                          <option value="">Select...</option>
-                          {departments.map((d) => (
-                            <option key={d} value={d}>{d}</option>
-                          ))}
-                        </select>
+                          className="mt-1 w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:border-teal-light focus:ring-2 focus:ring-teal-light/20 outline-none transition-all"
+                          placeholder="jane@example.com"
+                        />
                       </div>
                       <div>
                         <label className="text-sm font-medium text-primary-500">Preferred Date</label>
@@ -185,6 +228,7 @@ export default function Contact() {
                         />
                       </div>
                     </div>
+
                     <div>
                       <label className="text-sm font-medium text-primary-500">Message (optional)</label>
                       <textarea
@@ -213,3 +257,4 @@ export default function Contact() {
     </section>
   );
 }
+

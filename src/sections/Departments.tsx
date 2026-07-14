@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Heart, Brain, Bone, Baby, Eye, BrainCog, Stethoscope, Syringe, ArrowRight, Ambulance, FlaskConical, Microscope, Pill } from 'lucide-react';
 import ScrollReveal from '../components/ScrollReveal';
 
@@ -18,14 +17,14 @@ const departments = [
 ];
 
 export default function Departments() {
-  const [active, setActive] = useState(0);
-
   return (
-    <section id="departments" className="py-20 lg:py-28 bg-white relative overflow-hidden">
-      <div className="absolute top-20 left-0 w-72 h-72 bg-seafoam-50 rounded-full blur-3xl opacity-50" />
+    <section id="departments" className="py-20 lg:py-28 bg-slate-50 relative overflow-hidden">
+      {/* Background decorations */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-seafoam-100/40 rounded-full blur-3xl opacity-60 -translate-y-1/2 translate-x-1/3" />
+      <div className="absolute bottom-0 left-0 w-80 h-80 bg-teal-light/20 rounded-full blur-3xl opacity-60 translate-y-1/3 -translate-x-1/4" />
 
       <div className="container-x relative">
-        <ScrollReveal animation="fade-up" className="max-w-2xl mx-auto text-center">
+        <ScrollReveal animation="fade-up" className="max-w-2xl mx-auto text-center mb-16">
           <span className="section-eyebrow">Our Departments</span>
           <h2 className="section-title">
             Specialized care across <span className="gradient-text">every field</span>
@@ -35,80 +34,37 @@ export default function Departments() {
           </p>
         </ScrollReveal>
 
-        <div className="mt-14 grid lg:grid-cols-3 gap-6">
-          {/* Department list */}
-          <ScrollReveal animation="fade-right" className="lg:col-span-1">
-            <div className="space-y-2">
-              {departments.map((d, i) => (
-                <button
-                  key={d.name}
-                  onClick={() => setActive(i)}
-                  className={`w-full flex items-center gap-3 p-4 rounded-2xl text-left transition-all duration-300 ${
-                    active === i
-                      ? 'bg-gradient-to-r from-primary-500 to-teal-deep text-white shadow-lg scale-[1.02]'
-                      : 'bg-seafoam-50 text-primary-500 hover:bg-seafoam-100 hover:scale-[1.01]'
-                  }`}
-                >
-                  <span className={`flex items-center justify-center w-10 h-10 rounded-xl transition-colors ${
-                    active === i ? 'bg-white/15 text-white' : 'bg-white text-teal-deep'
-                  }`}>
-                    <d.icon className="w-5 h-5" />
-                  </span>
-                  <span className="font-medium">{d.name}</span>
-                  <span className={`ml-auto text-xs ${active === i ? 'text-seafoam-100' : 'text-slate-brand'}`}>
-                    {d.doctors} doctors
-                  </span>
-                </button>
-              ))}
-            </div>
-          </ScrollReveal>
-
-          {/* Detail panel */}
-          <ScrollReveal animation="fade-left" delay={150} className="lg:col-span-2">
-            <div className="relative bg-gradient-to-br from-seafoam-50 via-white to-teal-light/10 rounded-3xl p-8 lg:p-10 border border-seafoam-100 overflow-hidden h-full">
-              {/* Decorative circle */}
-              <div className="absolute -top-20 -right-20 w-60 h-60 bg-seafoam-100/40 rounded-full blur-2xl" />
-
-              <div className="relative">
-                <div className="flex items-start gap-5">
-                  <span className="flex-shrink-0 flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-primary-500 to-teal-deep text-white shadow-lg">
-                    {(() => {
-                      const Icon = departments[active].icon;
-                      return <Icon className="w-8 h-8" />;
-                    })()}
-                  </span>
-                  <div>
-                    <h3 className="text-2xl font-bold text-primary-500">{departments[active].name}</h3>
-                    <p className="mt-2 text-slate-brand leading-relaxed">{departments[active].desc}</p>
-                  </div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          {departments.map((d, i) => (
+            <ScrollReveal key={d.name} animation="fade-up" delay={i * 50}>
+              <div className="bg-white rounded-3xl p-6 lg:p-8 h-full flex flex-col shadow-[0_4px_20px_-10px_rgba(0,0,0,0.05)] border border-slate-100 hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group">
+                <div className="w-14 h-14 rounded-2xl bg-seafoam-50 text-teal-deep flex items-center justify-center mb-6 group-hover:bg-gradient-to-br group-hover:from-primary-500 group-hover:to-teal-deep group-hover:text-white transition-all duration-300 group-hover:scale-110">
+                  <d.icon className="w-7 h-7" />
                 </div>
-
-                <div className="mt-8 grid sm:grid-cols-3 gap-4">
-                  {[
-                    { label: 'Specialists', value: `${departments[active].doctors}` },
-                    { label: 'Procedures / yr', value: '4.2k+' },
-                    { label: 'Satisfaction', value: '99%' },
-                  ].map((stat) => (
-                    <div key={stat.label} className="bg-white rounded-2xl p-5 text-center shadow-sm border border-slate-50 hover:shadow-md transition-shadow">
-                      <p className="text-2xl font-bold gradient-text">{stat.value}</p>
-                      <p className="text-xs text-slate-brand mt-1 uppercase tracking-wider">{stat.label}</p>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="mt-8 flex flex-wrap gap-4 justify-center sm:justify-start">
-                  <a href="#contact" className="btn-primary">
-                    Book a Consultation
-                    <ArrowRight className="w-4 h-4" />
-                  </a>
-                  <a href="#services" className="btn-outline">
-                    View All Services
-                  </a>
+                
+                <h3 className="text-xl font-bold text-primary-500 mb-3 group-hover:text-teal-deep transition-colors">{d.name}</h3>
+                <p className="text-sm text-slate-brand leading-relaxed mb-6 flex-grow">{d.desc}</p>
+                
+                <div className="flex items-center justify-between pt-4 border-t border-slate-100 mt-auto">
+                  <span className="text-xs font-bold text-teal-deep uppercase tracking-wider bg-seafoam-50 px-3 py-1 rounded-full group-hover:bg-teal-50 transition-colors">
+                    {d.doctors} Specialists
+                  </span>
+                  <ArrowRight className="w-5 h-5 text-slate-300 group-hover:text-teal-deep group-hover:translate-x-1 transition-all" />
                 </div>
               </div>
-            </div>
-          </ScrollReveal>
+            </ScrollReveal>
+          ))}
         </div>
+
+        <ScrollReveal animation="fade-up" delay={400} className="mt-16 flex flex-wrap gap-4 justify-center">
+          <a href="#contact" className="btn-primary shadow-lg shadow-teal-deep/20 hover:shadow-teal-deep/30">
+            Book a Consultation
+            <ArrowRight className="w-4 h-4" />
+          </a>
+          <a href="#services" className="btn-outline bg-white hover:bg-slate-50">
+            View All Services
+          </a>
+        </ScrollReveal>
       </div>
     </section>
   );
