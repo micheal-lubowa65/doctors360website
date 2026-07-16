@@ -21,6 +21,10 @@ import ArticlePage from './pages/ArticlePage';
 import GalleryPage from './pages/GalleryPage';
 import DonatePage from './pages/DonatePage';
 
+// Admin pages
+import AdminLogin from './pages/admin/AdminLogin';
+import AdminLayout from './pages/admin/AdminLayout';
+
 function HomePage() {
   return (
     <main>
@@ -46,6 +50,21 @@ function ScrollToTop() {
 }
 
 function AppShell() {
+  const location = useLocation();
+  const isAdminRoute = location.pathname.startsWith('/admin');
+
+  if (isAdminRoute) {
+    return (
+      <div className="min-h-screen bg-slate-950">
+        <ScrollToTop />
+        <Routes>
+          <Route path="/admin/login" element={<AdminLogin />} />
+          <Route path="/admin/*" element={<AdminLayout />} />
+        </Routes>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-white">
       <Navbar />

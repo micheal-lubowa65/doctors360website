@@ -82,7 +82,7 @@ export default function ProgramsMap() {
       </ComposableMap>
 
       {/* Map Legend Overlay */}
-      <div className="absolute bottom-4 left-4 bg-[#112240]/80 backdrop-blur-md border border-white/10 p-3 rounded-xl shadow-lg">
+      <div className="absolute bottom-4 left-4 bg-[#112240]/80  border border-white/10 p-3 rounded-xl shadow-lg">
         <div className="flex items-center gap-2 mb-1.5">
           <div className="relative flex items-center justify-center w-2.5 h-2.5">
              <div className="absolute w-2.5 h-2.5 rounded-full bg-[#2DD4BF] animate-ping opacity-60"></div>

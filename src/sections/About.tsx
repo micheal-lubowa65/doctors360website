@@ -1,4 +1,5 @@
-import { Target, Eye, HeartHandshake, Shield, Wifi, Users, Sprout } from 'lucide-react';
+import { Bullseye, Eye, Heart, Shield, Wifi, People, Flower1 } from 'react-bootstrap-icons';
+import { Target, HeartHandshake, Sprout, Users } from 'lucide-react';
 import ScrollReveal from '../components/ScrollReveal';
 
 const pillars = [

@@ -1,6 +1,8 @@
+import { Users, Handshake, CheckCircle2 } from 'lucide-react';
 import { useState } from 'react';
-import { Heart, Users, Handshake, CheckCircle2, Send, ArrowRight } from 'lucide-react';
+import { Heart, People, CheckCircle, Send, ArrowRight } from 'react-bootstrap-icons';
 import ScrollReveal from '../components/ScrollReveal';
+import { dbService } from '../services/dbService';
 
 const tiers = [
   {
@@ -83,9 +85,21 @@ export default function DonatePage() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    try {
+      await dbService.submitDonation({
+        name: form.name,
+        email: form.email,
+        type: form.type,
+        amount: form.type === 'donation' ? form.amount : undefined,
+        message: form.message || undefined
+      });
+      setSubmitted(true);
+    } catch (err) {
+      console.error('Error submitting donation:', err);
+      alert('Failed to submit donation. Please try again.');
+    }
   };
 
   return (
@@ -93,8 +107,8 @@ export default function DonatePage() {
 
       {/* Hero */}
       <section className="pt-36 pb-20 lg:pt-44 lg:pb-28 bg-gradient-to-br from-primary-500 via-teal-deep to-primary-700 relative overflow-hidden noise-overlay">
-        <div className="absolute -top-20 right-0 w-96 h-96 bg-seafoam-300/10 rounded-full blur-3xl animate-float" />
-        <div className="absolute bottom-0 -left-20 w-80 h-80 bg-white/5 rounded-full blur-3xl animate-float-alt" />
+        <div className="absolute -top-20 right-0 w-96 h-96 bg-seafoam-300/10 rounded-full blur-3xl " />
+        <div className="absolute bottom-0 -left-20 w-80 h-80 bg-white rounded-full blur-3xl -alt" />
         <div className="container-x relative grid lg:grid-cols-2 gap-12 items-center text-left">
           <ScrollReveal animation="fade-right">
             <span className="section-eyebrow text-seafoam-300">Donate & Support</span>
@@ -210,7 +224,7 @@ export default function DonatePage() {
               <div className="bg-white rounded-3xl p-8 lg:p-10 shadow-2xl border border-seafoam-50">
                 {submitted ? (
                   <div className="flex flex-col items-center justify-center py-16 text-center">
-                    <span className="flex items-center justify-center w-20 h-20 rounded-full bg-seafoam-100 text-teal-deep mb-6 animate-pulse-ring">
+                    <span className="flex items-center justify-center w-20 h-20 rounded-full bg-seafoam-100 text-teal-deep mb-6 ">
                       <CheckCircle2 className="w-10 h-10" />
                     </span>
                     <h3 className="text-2xl font-bold text-primary-500">Thank You!</h3>

@@ -27,3 +27,22 @@ credentials.json
 *.pem
 *.key
 .credentials
+
+# Utility/setup scripts (may contain credentials)
+check-users.cjs
+confirm-admin.cjs
+create-admin.cjs
+create-admin.js
+create-db-user.cjs
+db-setup.js
+diagnose-auth.cjs
+find-region.js
+migrate-visibility.cjs
+reset-admin.cjs
+setup-admin.cjs
+setup-storage.cjs
+storage-setup.js
+test-connect.js
+test-login.cjs
+test-signup.cjs
+update-admin-credentials.cjs

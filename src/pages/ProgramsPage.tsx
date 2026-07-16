@@ -1,46 +1,19 @@
-import { useState } from 'react';
-import { Globe, Users, HeartHandshake, BookOpen, ArrowRight, ChevronDown, ChevronUp, MapPin } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { GeoAlt, ArrowRight } from 'react-bootstrap-icons';
+import { MapPin, Globe, HeartHandshake, BookOpen, Users, Flame, Home, HelpCircle } from 'lucide-react';
+
+const iconMap: Record<string, any> = {
+  Globe,
+  HeartHandshake,
+  BookOpen,
+  Users,
+  Flame,
+  Home
+};
 import ScrollReveal from '../components/ScrollReveal';
 import ProgramsMap from '../components/ProgramsMap';
 import AnimatedCounter from '../components/AnimatedCounter';
-const programs = [
-  {
-    icon: Globe,
-    tag: 'Climate & Health',
-    title: 'Chinampa-Based Climate & Health Resilience Project Uganda',
-    description:
-      "Doctors360 is developing a climate-adaptive intervention for wetland-displaced communities in Wakiso and Kampala districts, using a wetland farming technique to suppress mosquito breeding while restoring food security. A working demonstration site has operated since July 2025, and we're currently seeking funding to expand the model to 10 sites and 100 households.",
-    impact: ['Working demonstration site active', 'Targeting 10 sites & 100 households', 'Malaria suppression & food security'],
-    image: '/images/programs-1.jpg',
-  },
-  {
-    icon: HeartHandshake,
-    tag: 'NCD Care',
-    title: 'PEN-Plus: Integrated Care for Sickle Cell Disease & Severe NCDs',
-    description:
-      "Uganda has one of the highest sickle cell trait prevalence rates in Africa — as high as 20% in parts of the north and east. Yet specialist care for sickle cell disease and other severe noncommunicable diseases (NCDs) remains concentrated in a handful of urban hospitals, out of reach for most rural families. An estimated 20,000 children are born with sickle cell disease in Uganda each year, and thousands die before age five due to late diagnosis and limited access to care.\n\nDoctors360 is developing a three-year program to help close this gap by scaling the WHO-endorsed PEN-Plus model, which brings specialist-level diagnosis and treatment for sickle cell disease, type 1 diabetes, rheumatic heart disease, and congenital heart disease to district-level hospitals, closer to the families who need it. Building on Uganda's two existing PEN-Plus sites, our proposal supports strengthening current care and establishing at least two new clinics in underserved districts, alongside expanded newborn screening, health worker training, and community outreach to reduce stigma around these conditions.\n\nThis program is currently in the proposal stage, and we're seeking partnership with the Ministry of Health, global NCD funders, and corporate partners to bring it to life.",
-    impact: ['WHO-endorsed PEN-Plus model', 'Specialist-level NCD care', 'Seeking global partnerships'],
-    image: '/images/programs-2.jpg',
-  },
-  {
-    icon: BookOpen,
-    tag: 'Digital Health',
-    title: 'Doctors360 SnapRecord — Digital Clinical Documentation for Small Clinics',
-    description:
-      "Across much of Africa, small and rural health facilities still rely on paper patient records — familiar and easy to use in the moment, but easily lost, damaged, or impossible to retrieve when a patient returns. Conventional electronic medical record systems often fail to solve this, since they ask healthcare workers to type detailed notes, learn new software, and abandon habits that work well during busy consultations.\n\nDoctors360 SnapRecord is a proposed mobile-first solution built around a simple idea: if you can take a photo, you can create a retrievable digital patient record. Rather than replacing handwritten notes, the app lets a health worker photograph them and link that photo to the right patient and visit — so records can be found again later, without requiring anyone to change how they already work.\n\nWe are currently seeking grant funding to design, build, and pilot a first version of SnapRecord at Doctors360 Medical Center, with a goal of testing whether this simplified approach can make digital record-keeping accessible to clinics that have been left out of digital health so far.",
-    impact: ['Mobile-first digital records', 'No behavioral change required', 'Currently seeking pilot funding'],
-    image: '/images/programs-3.jpg',
-  },
-  {
-    icon: Users,
-    tag: 'Community Health',
-    title: 'SAFEStart+ Wakiso HIV, Hepatitis B & Syphilis Awareness Project',
-    description:
-      "Location: Wakiso District, Uganda | Status: Ongoing\n\nWakiso District has Uganda's highest adult HIV prevalence (8.1%), alongside significant gaps in hepatitis B and syphilis awareness among young people and pregnant women. Doctors360 is training youth peer educators, running community and school sensitization sessions, and engaging male partners in ANC and testing decisions — building on eight years of clinical HIV, hepatitis B, and syphilis experience from our work in South Sudan. The project aims to reach 1,500+ young people and caregivers, train 20 peer educators, and establish a lasting community health structure in Wakiso.",
-    impact: ['Reaching 1,500+ young people', 'Training 20 peer educators', 'Focus on HIV, Hep B & Syphilis'],
-    image: '/images/programs-4.jpg',
-  },
-];
+import { dbService, Program } from '../services/dbService';
 
 const impactStats = [
   { value: '50K+', label: 'Patients Served' },
@@ -59,15 +32,29 @@ const partners = [
   'African Development Bank',
   'German Development Cooperation (GIZ)',
 ];
-
 export default function ProgramsPage() {
+  const [programs, setPrograms] = useState<Program[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    dbService.getPrograms()
+      .then(data => {
+        setPrograms(data);
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error('Error fetching programs:', err);
+        setLoading(false);
+      });
+  }, []);
+
   return (
     <div className="min-h-screen bg-white">
 
       {/* Hero */}
       <section className="pt-36 pb-20 bg-gradient-to-br from-primary-500 via-teal-deep to-primary-700 relative overflow-hidden noise-overlay">
-        <div className="absolute -top-20 right-0 w-96 h-96 bg-seafoam-300/10 rounded-full blur-3xl animate-float" />
-        <div className="absolute bottom-0 -left-20 w-80 h-80 bg-white/5 rounded-full blur-3xl animate-float-alt" />
+        <div className="absolute -top-20 right-0 w-96 h-96 bg-seafoam-300/10 rounded-full blur-3xl " />
+        <div className="absolute bottom-0 -left-20 w-80 h-80 bg-white rounded-full blur-3xl -alt" />
         <div className="container-x relative text-center">
           <ScrollReveal animation="fade-up">
             <span className="section-eyebrow text-seafoam-300">NGO Programs</span>
@@ -122,32 +109,43 @@ export default function ProgramsPage() {
           </ScrollReveal>
 
           <div className="mt-14 space-y-4">
-            {programs.map((prog, i) => (
-              <ScrollReveal key={prog.title} animation="fade-up" delay={i * 80}>
-                <div className="rounded-3xl bg-white border border-seafoam-100 overflow-hidden shadow-sm hover:shadow-md transition-shadow p-6 lg:p-8">
-                  <div className="flex items-start gap-5 mb-6">
-                    <span className="flex-shrink-0 flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br from-primary-500 to-teal-deep text-white">
-                      <prog.icon className="w-7 h-7" />
-                    </span>
-                    <div className="flex-1 pt-1">
-                      <span className="inline-block text-xs text-teal-deep font-semibold uppercase tracking-wider mb-1">{prog.tag}</span>
-                      <h3 className="text-xl font-bold text-primary-500">{prog.title}</h3>
+            {loading ? (
+              <div className="flex justify-center items-center py-10">
+                <div className="w-10 h-10 border-4 border-primary-500 border-t-transparent rounded-full animate-spin"></div>
+              </div>
+            ) : programs.length === 0 ? (
+              <p className="text-center text-slate-brand py-10">No programs found.</p>
+            ) : (
+              programs.map((prog, i) => {
+                const IconComponent = iconMap[prog.icon_name] || HelpCircle;
+                return (
+                  <ScrollReveal key={prog.id} animation="fade-up" delay={i * 80}>
+                    <div className="rounded-3xl bg-white border border-seafoam-100 overflow-hidden shadow-sm hover:shadow-md transition-shadow p-6 lg:p-8">
+                      <div className="flex items-start gap-5 mb-6">
+                        <span className="flex-shrink-0 flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br from-primary-500 to-teal-deep text-white">
+                          <IconComponent className="w-7 h-7" />
+                        </span>
+                        <div className="flex-1 pt-1">
+                          <span className="inline-block text-xs text-teal-deep font-semibold uppercase tracking-wider mb-1">{prog.tag}</span>
+                          <h3 className="text-xl font-bold text-primary-500">{prog.title}</h3>
+                        </div>
+                      </div>
+                      <div>
+                        <p className="text-slate-brand leading-relaxed whitespace-pre-line">{prog.description}</p>
+                        <ul className="mt-6 space-y-2">
+                          {prog.impact.map((point) => (
+                            <li key={point} className="flex items-center gap-2 text-sm text-primary-500 font-medium">
+                              <span className="w-1.5 h-1.5 rounded-full bg-seafoam-400 flex-shrink-0" />
+                              {point}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     </div>
-                  </div>
-                  <div>
-                    <p className="text-slate-brand leading-relaxed whitespace-pre-line">{prog.description}</p>
-                    <ul className="mt-6 space-y-2">
-                      {prog.impact.map((point) => (
-                        <li key={point} className="flex items-center gap-2 text-sm text-primary-500 font-medium">
-                          <span className="w-1.5 h-1.5 rounded-full bg-seafoam-400 flex-shrink-0" />
-                          {point}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </ScrollReveal>
-            ))}
+                  </ScrollReveal>
+                );
+              })
+            )}
           </div>
         </div>
       </section>

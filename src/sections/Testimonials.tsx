@@ -1,47 +1,33 @@
-import { useState } from 'react';
-import { Star, Quote, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Star, Quote, ChevronLeft, ChevronRight } from 'react-bootstrap-icons';
 import ScrollReveal from '../components/ScrollReveal';
-
-const testimonials = [
-  {
-    name: 'Achol Deng',
-    role: 'Maternity Patient (Juba)',
-    image: '/images/testimonial-1.png',
-    quote: 'During my high-risk pregnancy, the maternal health team at Doctors360 gave me the support and antenatal care I needed. Thanks to their skilled midwives and modern Juba clinic, I delivered a healthy baby girl safely.',
-    rating: 5,
-  },
-  {
-    name: 'James Dut',
-    role: 'Community Outreach Patient (Yei)',
-    image: '/images/testimonial-2.png',
-    quote: 'When my children fell severely ill with malaria, the Doctors360 mobile outreach team in Yei responded immediately. They tested, treated, and provided us with protective mosquito nets. They are a lifeline for our community.',
-    rating: 5,
-  },
-  {
-    name: 'Nyabol Nyuon',
-    role: 'Pediatrics Parent (Malakal)',
-    image: '/images/testimonial-3.png',
-    quote: 'My son was suffering from severe malnutrition, but the nutrition program screening identified it early. The therapeutic feeding and care from the pediatricians saved his life. I am forever grateful to Doctors360.',
-    rating: 5,
-  },
-  {
-    name: 'Emmanuel Lado',
-    role: 'Emergency Care Patient (Juba)',
-    image: '/images/testimonial-4.png',
-    quote: 'After a severe motorcycle accident in Juba, I was rushed to the newly expanded Doctors360 Emergency Department. The trauma team acted quickly, stabilized me, and provided exceptional critical care.',
-    rating: 5,
-  },
-];
+import { dbService, Testimonial } from '../services/dbService';
 
 export default function Testimonials() {
+  const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
+  const [loading, setLoading] = useState(true);
   const [index, setIndex] = useState(0);
 
+  useEffect(() => {
+    dbService.getTestimonials()
+      .then(data => {
+        setTestimonials(data);
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error('Error fetching testimonials:', err);
+        setLoading(false);
+      });
+  }, []);
 
   const go = (dir: 'left' | 'right') => {
+    if (testimonials.length === 0) return;
     setIndex((i) =>
       dir === 'right' ? (i + 1) % testimonials.length : (i - 1 + testimonials.length) % testimonials.length
     );
   };
+
+  if (loading || testimonials.length === 0) return null;
 
   return (
     <section id="testimonials" className="py-20 lg:py-28 bg-gradient-to-b from-white via-seafoam-50/30 to-white relative overflow-hidden">
@@ -76,7 +62,7 @@ export default function Testimonials() {
 
               <div className="mt-8 flex items-center gap-4 animate-fade-up" style={{ animationDelay: '0.2s' }}>
                 <img
-                  src={testimonials[index].image}
+                  src={testimonials[index].image_url}
                   alt={testimonials[index].name}
                   loading="lazy"
                   className="w-14 h-14 rounded-full object-cover ring-2 ring-seafoam-300"

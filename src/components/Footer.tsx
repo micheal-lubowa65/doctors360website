@@ -1,5 +1,6 @@
+import { MapPin, Phone, Mail } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { Facebook, Twitter, Instagram, Linkedin, MapPin, Phone, Mail, Send } from 'lucide-react';
+import { Facebook, Twitter, Instagram, Linkedin, GeoAlt, Telephone, Envelope, Send } from 'react-bootstrap-icons';
 
 const TiktokIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
@@ -125,7 +126,7 @@ export default function Footer() {
             <input
               type="email"
               placeholder="Enter your email"
-              className="flex-1 md:w-72 px-5 py-2.5 rounded-full bg-white/10 border border-white/15 text-white placeholder-seafoam-100/60 focus:border-seafoam-300 focus:ring-2 focus:ring-seafoam-300/20 outline-none transition-all"
+              className="flex-1 md:w-72 px-5 py-2.5 rounded-full bg-white border border-white/15 text-white placeholder-seafoam-100/60 focus:border-seafoam-300 focus:ring-2 focus:ring-seafoam-300/20 outline-none transition-all"
             />
             <button className="btn-secondary whitespace-nowrap w-full sm:w-auto justify-center">
               <Send className="w-4 h-4" />
@@ -144,7 +145,7 @@ export default function Footer() {
               <a
                 key={i}
                 href="#"
-                className="flex items-center justify-center w-9 h-9 rounded-full bg-white/10 hover:bg-seafoam-300 hover:text-primary-500 hover:scale-110 transition-all duration-300"
+                className="flex items-center justify-center w-9 h-9 rounded-full bg-white hover:bg-seafoam-300 hover:text-primary-500 hover:scale-110 transition-all duration-300"
                 aria-label="Social link"
               >
                 <Icon className="w-4 h-4" />

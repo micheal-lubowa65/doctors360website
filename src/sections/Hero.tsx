@@ -1,4 +1,5 @@
-import { ShieldCheck, HeartPulse, CalendarCheck, Star, Users, MapPin, Heart, CalendarDays } from 'lucide-react';
+import { ShieldCheck, HeartPulse, CalendarCheck, Star, People, GeoAlt, Heart, Calendar3 } from 'react-bootstrap-icons';
+import { Users, MapPin, CalendarDays } from 'lucide-react';
 import { useState, useEffect, useRef, useCallback } from 'react';
 import ScrollReveal from '../components/ScrollReveal';
 
@@ -84,8 +85,8 @@ export default function Hero() {
       className="relative overflow-hidden pt-36 pb-20 lg:pt-44 lg:pb-28 bg-gradient-to-br from-seafoam-50 via-white to-teal-light/10"
     >
       {/* Decorative blobs */}
-      <div className="absolute -top-32 -right-24 w-[28rem] h-[28rem] bg-seafoam-200/40 rounded-full blur-3xl animate-float" />
-      <div className="absolute bottom-0 -left-32 w-96 h-96 bg-teal-light/20 rounded-full blur-3xl animate-float-alt" />
+      <div className="absolute -top-32 -right-24 w-[28rem] h-[28rem] bg-seafoam-200/40 rounded-full blur-3xl " />
+      <div className="absolute bottom-0 -left-32 w-96 h-96 bg-teal-light/20 rounded-full blur-3xl -alt" />
       <div className="absolute top-1/2 left-1/3 w-72 h-72 bg-coral/5 rounded-full blur-3xl" />
 
       {/* Grid pattern */}
@@ -162,7 +163,7 @@ export default function Hero() {
           </div>
 
           {/* Floating card top */}
-          <div className="absolute top-6 -left-2 lg:-left-6 bg-white/95 backdrop-blur-sm rounded-2xl shadow-xl p-4 flex items-center gap-3 animate-float">
+          <div className="absolute top-6 -left-2 lg:-left-6 bg-white/95  rounded-2xl shadow-xl p-4 flex items-center gap-3 ">
             <span className="flex items-center justify-center w-11 h-11 rounded-xl bg-seafoam-100 text-teal-deep">
               <HeartPulse className="w-6 h-6" />
             </span>
@@ -174,10 +175,10 @@ export default function Hero() {
 
           {/* Floating card bottom */}
           <div
-            className="absolute bottom-10 -right-2 lg:-right-6 bg-white/95 backdrop-blur-sm rounded-2xl shadow-xl p-4 flex items-center gap-3 animate-float-alt"
+            className="absolute bottom-10 -right-2 lg:-right-6 bg-white/95  rounded-2xl shadow-xl p-4 flex items-center gap-3 -alt"
             style={{ animationDelay: '1s' }}
           >
-            <span className="flex items-center justify-center w-11 h-11 rounded-xl bg-coral/10 text-coral animate-pulse-ring">
+            <span className="flex items-center justify-center w-11 h-11 rounded-xl bg-coral/10 text-coral ">
               <ShieldCheck className="w-6 h-6" />
             </span>
             <div>

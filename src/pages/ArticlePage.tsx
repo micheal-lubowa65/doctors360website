@@ -1,6 +1,8 @@
+import { User } from 'lucide-react';
+import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { Calendar, Clock, ArrowLeft, Tag, User } from 'lucide-react';
-import { articles } from './NewsPage';
+import { Calendar, Clock, ArrowLeft, Tag, Person } from 'react-bootstrap-icons';
+import { dbService, Article } from '../services/dbService';
 import ScrollReveal from '../components/ScrollReveal';
 
 function formatDate(iso: string) {
@@ -31,7 +33,43 @@ function renderMarkdown(text: string) {
 
 export default function ArticlePage() {
   const { slug } = useParams<{ slug: string }>();
-  const article = articles.find((a) => a.slug === slug);
+  const [article, setArticle] = useState<Article | null>(null);
+  const [related, setRelated] = useState<Article[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (!slug) return;
+    setLoading(true);
+    
+    dbService.getArticleBySlug(slug)
+      .then(async (data) => {
+        setArticle(data);
+        if (data) {
+          try {
+            const allArticles = await dbService.getArticles();
+            const rel = allArticles
+              .filter((a) => a.slug !== slug && a.category === data.category)
+              .slice(0, 2);
+            setRelated(rel);
+          } catch (err) {
+            console.error('Error fetching related articles:', err);
+          }
+        }
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error('Error fetching article:', err);
+        setLoading(false);
+      });
+  }, [slug]);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center pt-36">
+        <div className="w-10 h-10 border-4 border-primary-500 border-t-transparent rounded-full animate-spin"></div>
+      </div>
+    );
+  }
 
   if (!article) {
     return (
@@ -44,15 +82,13 @@ export default function ArticlePage() {
     );
   }
 
-  const related = articles.filter((a) => a.slug !== slug && a.category === article.category).slice(0, 2);
-
   return (
     <div className="min-h-screen bg-white">
 
       {/* Hero image */}
       <div className="relative h-[65vh] overflow-hidden">
         <img
-          src={article.image}
+          src={article.image_url}
           alt={article.title}
           className="w-full h-full object-cover"
         />
@@ -80,7 +116,7 @@ export default function ArticlePage() {
           </Link>
           <span className="flex items-center gap-1.5"><User className="w-4 h-4" /> {article.author}</span>
           <span className="flex items-center gap-1.5"><Calendar className="w-4 h-4" /> {formatDate(article.date)}</span>
-          <span className="flex items-center gap-1.5"><Clock className="w-4 h-4" /> {article.readTime}</span>
+          <span className="flex items-center gap-1.5"><Clock className="w-4 h-4" /> {article.read_time}</span>
         </div>
       </div>
 
@@ -128,7 +164,7 @@ export default function ArticlePage() {
                   className="group flex gap-4 bg-white rounded-2xl overflow-hidden border border-seafoam-100 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300"
                 >
                   <div className="w-32 flex-shrink-0 overflow-hidden">
-                    <img src={rel.image} alt={rel.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                    <img src={rel.image_url} alt={rel.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                   </div>
                   <div className="p-4 flex flex-col justify-center">
                     <span className="text-xs text-teal-deep font-semibold uppercase tracking-wider">{rel.category}</span>

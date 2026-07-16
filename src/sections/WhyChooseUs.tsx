@@ -1,4 +1,5 @@
-import { Clock, Users, Award, HeartHandshake, Activity, Lock } from 'lucide-react';
+import { Users, HeartHandshake } from 'lucide-react';
+import { Clock, People, Award, Heart, Activity, Lock } from 'react-bootstrap-icons';
 import ScrollReveal from '../components/ScrollReveal';
 
 const features = [
@@ -14,8 +15,8 @@ export default function WhyChooseUs() {
   return (
     <section className="py-20 lg:py-28 bg-primary-500 relative overflow-hidden noise-overlay">
       {/* Animated background elements */}
-      <div className="absolute top-0 right-0 w-[30rem] h-[30rem] bg-teal-deep/30 rounded-full blur-3xl animate-float" />
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-seafoam-300/10 rounded-full blur-3xl animate-float-alt" />
+      <div className="absolute top-0 right-0 w-[30rem] h-[30rem] bg-teal-deep/30 rounded-full blur-3xl " />
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-seafoam-300/10 rounded-full blur-3xl -alt" />
 
       {/* Grid pattern */}
       <div

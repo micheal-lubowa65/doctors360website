@@ -1,4 +1,5 @@
-import { Heart, Brain, Bone, Baby, Eye, BrainCog, Stethoscope, Syringe, ArrowRight, Ambulance, FlaskConical, Microscope, Pill } from 'lucide-react';
+import { Stethoscope, Ambulance, Baby, BrainCog, Bone, Syringe, Brain, Microscope, Pill, FlaskConical } from 'lucide-react';
+import { Heart, Lightning, Activity, Person, Eye, Gear, HeartPulse, Eyedropper, ArrowRight, Truck, Cup, Search, Capsule } from 'react-bootstrap-icons';
 import ScrollReveal from '../components/ScrollReveal';
 
 const departments = [

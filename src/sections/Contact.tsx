@@ -1,6 +1,8 @@
+import { MapPin, Phone, Mail, Navigation, CheckCircle2 } from 'lucide-react';
 import { useState } from 'react';
-import { MapPin, Phone, Mail, Clock, CalendarCheck, CheckCircle2, Send, Navigation } from 'lucide-react';
+import { GeoAlt, Telephone, Envelope, Clock, CalendarCheck, CheckCircle, Send, Compass } from 'react-bootstrap-icons';
 import ScrollReveal from '../components/ScrollReveal';
+import { dbService } from '../services/dbService';
 import { MapContainer, TileLayer, Marker } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
@@ -58,15 +60,28 @@ export default function Contact() {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    try {
+      await dbService.submitAppointment({
+        name: form.name,
+        email: form.email,
+        phone: form.phone,
+        services: form.services,
+        date: form.date,
+        message: form.message || undefined
+      });
+      setSubmitted(true);
+    } catch (err) {
+      console.error('Error submitting appointment:', err);
+      alert('Failed to submit appointment request. Please try again.');
+    }
   };
 
   return (
     <section id="contact" className="py-20 lg:py-28 bg-primary-500 relative overflow-hidden noise-overlay">
-      <div className="absolute -top-20 -left-20 w-[28rem] h-[28rem] bg-teal-deep/30 rounded-full blur-3xl animate-float" />
-      <div className="absolute -bottom-20 -right-20 w-96 h-96 bg-seafoam-300/10 rounded-full blur-3xl animate-float-alt" />
+      <div className="absolute -top-20 -left-20 w-[28rem] h-[28rem] bg-teal-deep/30 rounded-full blur-3xl " />
+      <div className="absolute -bottom-20 -right-20 w-96 h-96 bg-seafoam-300/10 rounded-full blur-3xl -alt" />
 
       <div className="container-x relative">
         <div className="grid lg:grid-cols-2 gap-12">
@@ -88,7 +103,7 @@ export default function Contact() {
               {contactInfo.map((c, i) => (
                 <ScrollReveal key={c.label} animation="fade-up" delay={i * 80}>
                   <div className="flex gap-3 items-start group">
-                    <span className="flex-shrink-0 flex items-center justify-center w-11 h-11 rounded-xl bg-white/10 text-seafoam-300 group-hover:bg-seafoam-300 group-hover:text-primary-500 transition-all duration-300 group-hover:scale-110">
+                    <span className="flex-shrink-0 flex items-center justify-center w-11 h-11 rounded-xl bg-white text-seafoam-300 group-hover:bg-seafoam-300 group-hover:text-primary-500 transition-all duration-300 group-hover:scale-110">
                       <c.icon className="w-5 h-5" />
                     </span>
                     <div>
@@ -134,7 +149,7 @@ export default function Contact() {
             <div className="bg-white rounded-3xl p-8 lg:p-10 shadow-2xl relative z-20">
               {submitted ? (
                 <div className="h-full flex flex-col items-center justify-center text-center py-16">
-                  <span className="flex items-center justify-center w-20 h-20 rounded-full bg-seafoam-100 text-teal-deep mb-6 animate-pulse-ring">
+                  <span className="flex items-center justify-center w-20 h-20 rounded-full bg-seafoam-100 text-teal-deep mb-6 ">
                     <CheckCircle2 className="w-10 h-10" />
                   </span>
                   <h3 className="text-2xl font-bold text-primary-500">Request Received!</h3>
