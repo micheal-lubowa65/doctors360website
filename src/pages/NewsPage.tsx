@@ -1,4 +1,4 @@
-﻿import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Calendar, Clock, Tag, ArrowRight, Search } from 'lucide-react';
 import { useState } from 'react';
 import ScrollReveal from '../components/ScrollReveal';
@@ -12,7 +12,7 @@ export const articles = [
       'Malaria remains one of the leading causes of illness and death in South Sudan. Here is what Doctors360 recommends every household does to protect themselves and their children.',
     date: '2025-06-20',
     readTime: '5 min read',
-    image: '/images/news-1.jpg',
+    image: '/images/news-1.png',
     author: 'Dr. Amina Wek',
     content: `
 Malaria is caused by Plasmodium parasites transmitted through the bites of infected female Anopheles mosquitoes. In South Sudan, it is responsible for a significant proportion of all outpatient visits, hospital admissions, and deaths, particularly among children under 5 and pregnant women.
@@ -51,7 +51,7 @@ If you are experiencing symptoms, visit our Emergency Care or General Medicine d
       'Antenatal care visits save lives. Our obstetrics team explains what to expect during pregnancy, when to seek help, and how Doctors360 supports mothers every step of the way.',
     date: '2025-05-14',
     readTime: '7 min read',
-    image: '/images/news-2.jpg',
+    image: '/images/news-2.png',
     author: 'Dr. Sarah Machar',
     content: `
 Maternal mortality in South Sudan remains among the highest in the world. Yet the vast majority of maternal deaths are preventable with timely, quality antenatal care (ANC) and skilled birth attendance.
@@ -93,7 +93,7 @@ Book your first ANC appointment today — call +211 927 702 808.
       'Mental health disorders affect hundreds of millions across Africa, yet remain severely under-resourced. Doctors360 is committed to changing that — here is how.',
     date: '2025-04-03',
     readTime: '6 min read',
-    image: '/images/news-3.jpg',
+    image: '/images/news-3.png',
     author: 'Dr. Emmanuel Lado',
     content: `
 According to the WHO, 1 in 4 people globally will be affected by a mental health condition at some point in their lives. Yet in sub-Saharan Africa, more than 90% of people who need mental health care do not receive it.
@@ -128,7 +128,7 @@ If you or someone you know is struggling, please reach out to our Mental Health 
       'Our Emergency Department has completed a major expansion, doubling capacity and adding a dedicated trauma bay. Read what this means for patients across Juba.',
     date: '2025-03-10',
     readTime: '3 min read',
-    image: '/images/news-4.jpg',
+    image: '/images/news-4.png',
     author: 'James Deng',
     content: `
 Doctors360 is pleased to announce the completion of the Emergency Department expansion project, funded through a combination of donor contributions and operational revenue.
@@ -159,7 +159,7 @@ For emergencies, call +211 927 702 808 or arrive directly at our facility in Jub
       'Forty community health workers from across South Sudan completed their three-month training with Doctors360 this week — each returning to their villages with the skills to save lives.',
     date: '2025-02-18',
     readTime: '4 min read',
-    image: '/images/programs-2.jpg',
+    image: '/images/programs-2.png',
     author: 'Grace Akol',
     content: `
 This week, Doctors360 celebrated the graduation of 40 community health workers (CHWs) from our flagship training program — bringing our total number of trained CHWs to over 200.
@@ -197,7 +197,7 @@ Want to support the CHW program? Visit our Donate page.
       'Child malnutrition remains a critical challenge across South Sudan. Our new community nutrition program aims to screen, treat, and prevent malnutrition in children under 5.',
     date: '2025-01-25',
     readTime: '5 min read',
-    image: '/images/news-5.jpg',
+    image: '/images/news-5.png',
     author: 'Dr. Amina Wek',
     content: `
 Malnutrition is one of the most significant drivers of child mortality in South Sudan. It weakens immune systems, stunts development, and makes children far more vulnerable to infectious diseases.
