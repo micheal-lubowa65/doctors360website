@@ -11,7 +11,7 @@
     "typecheck": "tsc --noEmit -p tsconfig.app.json"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.57.4",
+    "@supabase/supabase-js": "^2.49.4",
     "d3-geo": "^3.1.1",
     "leaflet": "^1.9.4",
     "lucide-react": "^1.24.0",
