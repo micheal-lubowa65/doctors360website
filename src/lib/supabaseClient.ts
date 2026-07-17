@@ -1,10 +1,15 @@
 import { createClient } from '@supabase/supabase-js';
 
+/**
+ * Strip every character that isn't printable ASCII (0x20–0x7E).
+ * Supabase URLs and JWT anon keys are purely ASCII, so this is safe
+ * and prevents the "String contains non ISO-8859-1 code point" error
+ * that occurs when env vars are pasted with invisible Unicode chars
+ * (BOM, zero-width spaces, smart quotes, etc.).
+ */
 function sanitize(value: string): string {
-  return value
-    .trim()
-    .replace(/[\u200B\u200C\u200D\uFEFF\u00A0]/g, ' ')
-    .trim();
+  // eslint-disable-next-line no-control-regex
+  return value.replace(/[^\x20-\x7E]/g, '').trim();
 }
 
 const supabaseUrl = sanitize(import.meta.env.VITE_SUPABASE_URL || '');

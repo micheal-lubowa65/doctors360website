@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Menu, X, Phone, CalendarCheck, ChevronDown } from 'lucide-react';
+import { Menu, X, Phone, CalendarCheck } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 
 // Top-level page navigation
@@ -14,7 +14,6 @@ const pageLinks = [
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [dropdown, setDropdown] = useState<string | null>(null);
   const { pathname } = useLocation();
   const isHome = pathname === '/';
 
@@ -22,13 +21,6 @@ export default function Navbar() {
     const onScroll = () => setScrolled(window.scrollY > 24);
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
-  }, []);
-
-  // Close dropdown on outside click
-  useEffect(() => {
-    const close = () => setDropdown(null);
-    document.addEventListener('click', close);
-    return () => document.removeEventListener('click', close);
   }, []);
 
   const navBg = scrolled || !isHome
@@ -62,41 +54,14 @@ export default function Navbar() {
         {/* Desktop nav */}
         <ul className="hidden lg:flex items-center gap-0.5">
           {pageLinks.map((l) => (
-            <li key={l.href} className="relative">
-              {l.children ? (
-                <>
-                  <button
-                    onClick={(e) => { e.stopPropagation(); setDropdown(dropdown === l.href ? null : l.href); }}
-                    className={`flex items-center gap-1 px-3 py-2 text-sm font-medium rounded-full transition-all duration-300 ${pathname.startsWith(l.href) ? 'text-teal-deep bg-seafoam-50' : `${textColor} hover:text-teal-deep hover:bg-seafoam-50/50`
-                      }`}
-                  >
-                    {l.label}
-                    <ChevronDown className={`w-3.5 h-3.5 transition-transform ${dropdown === l.href ? 'rotate-180' : ''}`} />
-                  </button>
-                  {dropdown === l.href && (
-                    <div className="absolute top-full left-0 mt-2 w-52 bg-white rounded-2xl shadow-2xl border border-seafoam-50 py-2 z-50" onClick={(e) => e.stopPropagation()}>
-                      {l.children.map((child) => (
-                        <Link
-                          key={child.href}
-                          to={child.href}
-                          onClick={() => setDropdown(null)}
-                          className="block px-4 py-2.5 text-sm text-primary-500 hover:text-teal-deep hover:bg-seafoam-50 transition-colors"
-                        >
-                          {child.label}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                </>
-              ) : (
-                <Link
-                  to={l.href}
-                  className={`relative px-3 py-2 text-sm font-medium rounded-full transition-all duration-300 ${pathname === l.href ? 'text-teal-deep bg-seafoam-50' : `${textColor} hover:text-teal-deep hover:bg-seafoam-50/50`
-                    }`}
-                >
-                  {l.label}
-                </Link>
-              )}
+            <li key={l.href}>
+              <Link
+                to={l.href}
+                className={`relative px-3 py-2 text-sm font-medium rounded-full transition-all duration-300 ${pathname === l.href ? 'text-teal-deep bg-seafoam-50' : `${textColor} hover:text-teal-deep hover:bg-seafoam-50/50`
+                  }`}
+              >
+                {l.label}
+              </Link>
             </li>
           ))}
         </ul>
