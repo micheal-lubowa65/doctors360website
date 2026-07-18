@@ -9,8 +9,8 @@ function sanitize(value: string): string {
   return value.replace(/[^\x20-\x7E]/g, '').trim();
 }
 
-const supabaseUrl = sanitize(import.meta.env.VITE_SUPABASE_URL || '');
-const supabaseAnonKey = sanitize(import.meta.env.VITE_SUPABASE_ANON_KEY || '');
+const supabaseUrl = sanitize(import.meta.env.VITE_SUPABASE_URL || 'https://placeholder.supabase.co');
+const supabaseAnonKey = sanitize(import.meta.env.VITE_SUPABASE_ANON_KEY || 'placeholder-anon-key');
 
 export default function AddUser() {
   const [email, setEmail] = useState('');

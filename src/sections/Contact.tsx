@@ -103,7 +103,7 @@ export default function Contact() {
               {contactInfo.map((c, i) => (
                 <ScrollReveal key={c.label} animation="fade-up" delay={i * 80}>
                   <div className="flex gap-3 items-start group">
-                    <span className="flex-shrink-0 flex items-center justify-center w-11 h-11 rounded-xl bg-white text-seafoam-300 group-hover:bg-seafoam-300 group-hover:text-primary-500 transition-all duration-300 group-hover:scale-110">
+                    <span className="flex-shrink-0 flex items-center justify-center w-11 h-11 rounded-xl bg-seafoam-300 text-primary-700 group-hover:bg-white group-hover:text-primary-500 transition-all duration-300 group-hover:scale-110">
                       <c.icon className="w-5 h-5" />
                     </span>
                     <div>
@@ -146,7 +146,7 @@ export default function Contact() {
 
           {/* Right: form */}
           <ScrollReveal animation="fade-left" delay={200}>
-            <div className="bg-white rounded-3xl p-8 lg:p-10 shadow-2xl relative z-20">
+            <div className="bg-seafoam-300 rounded-3xl p-8 lg:p-10 shadow-2xl relative z-20">
               {submitted ? (
                 <div className="h-full flex flex-col items-center justify-center text-center py-16">
                   <span className="flex items-center justify-center w-20 h-20 rounded-full bg-seafoam-100 text-teal-deep mb-6 ">
@@ -182,7 +182,7 @@ export default function Contact() {
                           name="name"
                           value={form.name}
                           onChange={handleChange}
-                          className="mt-1 w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:border-teal-light focus:ring-2 focus:ring-teal-light/20 outline-none transition-all"
+                          className="mt-1 w-full px-4 py-2.5 rounded-xl bg-white border border-slate-200 focus:border-teal-light focus:ring-2 focus:ring-teal-light/20 outline-none transition-all"
                           placeholder="Jane Doe"
                         />
                       </div>
@@ -193,7 +193,7 @@ export default function Contact() {
                           name="phone"
                           value={form.phone}
                           onChange={handleChange}
-                          className="mt-1 w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:border-teal-light focus:ring-2 focus:ring-teal-light/20 outline-none transition-all"
+                          className="mt-1 w-full px-4 py-2.5 rounded-xl bg-white border border-slate-200 focus:border-teal-light focus:ring-2 focus:ring-teal-light/20 outline-none transition-all"
                           placeholder="(555) 123-4567"
                         />
                       </div>
@@ -227,7 +227,7 @@ export default function Contact() {
                           name="email"
                           value={form.email}
                           onChange={handleChange}
-                          className="mt-1 w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:border-teal-light focus:ring-2 focus:ring-teal-light/20 outline-none transition-all"
+                          className="mt-1 w-full px-4 py-2.5 rounded-xl bg-white border border-slate-200 focus:border-teal-light focus:ring-2 focus:ring-teal-light/20 outline-none transition-all"
                           placeholder="jane@example.com"
                         />
                       </div>
@@ -239,7 +239,7 @@ export default function Contact() {
                           name="date"
                           value={form.date}
                           onChange={handleChange}
-                          className="mt-1 w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:border-teal-light focus:ring-2 focus:ring-teal-light/20 outline-none transition-all"
+                          className="mt-1 w-full px-4 py-2.5 rounded-xl bg-white border border-slate-200 focus:border-teal-light focus:ring-2 focus:ring-teal-light/20 outline-none transition-all"
                         />
                       </div>
                     </div>
@@ -251,7 +251,7 @@ export default function Contact() {
                         value={form.message}
                         onChange={handleChange}
                         rows={3}
-                        className="mt-1 w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:border-teal-light focus:ring-2 focus:ring-teal-light/20 outline-none transition-all resize-none"
+                        className="mt-1 w-full px-4 py-2.5 rounded-xl bg-white border border-slate-200 focus:border-teal-light focus:ring-2 focus:ring-teal-light/20 outline-none transition-all resize-none"
                         placeholder="Tell us about your symptoms or concerns..."
                       />
                     </div>

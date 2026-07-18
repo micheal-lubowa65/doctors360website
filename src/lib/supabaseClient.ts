@@ -12,11 +12,11 @@ function sanitize(value: string): string {
   return value.replace(/[^\x20-\x7E]/g, '').trim();
 }
 
-const supabaseUrl = sanitize(import.meta.env.VITE_SUPABASE_URL || '');
-const supabaseAnonKey = sanitize(import.meta.env.VITE_SUPABASE_ANON_KEY || '');
+const supabaseUrl = sanitize(import.meta.env.VITE_SUPABASE_URL || 'https://placeholder.supabase.co');
+const supabaseAnonKey = sanitize(import.meta.env.VITE_SUPABASE_ANON_KEY || 'placeholder-anon-key');
 
-if (!supabaseUrl || !supabaseAnonKey) {
-  console.error('Missing Supabase env vars: VITE_SUPABASE_URL and/or VITE_SUPABASE_ANON_KEY');
+if (supabaseUrl === 'https://placeholder.supabase.co') {
+  console.error('Missing Supabase env vars: VITE_SUPABASE_URL and/or VITE_SUPABASE_ANON_KEY. Please create a .env file and set these variables.');
 }
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey);

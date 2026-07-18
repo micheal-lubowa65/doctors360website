@@ -157,7 +157,7 @@ export default function Footer() {
               <a
                 key={i}
                 href="#"
-                className="flex items-center justify-center w-9 h-9 rounded-full bg-white text-primary-700 hover:bg-seafoam-300 hover:text-primary-500 hover:scale-110 transition-all duration-300"
+                className="flex items-center justify-center w-9 h-9 rounded-full bg-seafoam-300 text-primary-700 hover:bg-white hover:text-primary-500 hover:scale-110 transition-all duration-300"
                 aria-label="Social link"
               >
                 <Icon className="w-4 h-4" />
