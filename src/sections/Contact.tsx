@@ -1,8 +1,9 @@
-import { MapPin, Phone, Mail, Navigation, CheckCircle2, Clock, CalendarCheck, Send } from 'lucide-react';
+import { MapPin, Phone, Mail, Navigation, CheckCircle2, Clock, CalendarCheck, Send, Loader2 } from 'lucide-react';
 import { useState } from 'react';
 
 import ScrollReveal from '../components/ScrollReveal';
 import { dbService } from '../services/dbService';
+import { emailService } from '../services/emailService';
 import { MapContainer, TileLayer, Marker } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
@@ -36,6 +37,7 @@ const customIcon = L.divIcon({
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [form, setForm] = useState<{
     name: string;
     email: string;
@@ -62,7 +64,13 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (form.services.length === 0) {
+      alert('Please select at least one service.');
+      return;
+    }
+    setLoading(true);
     try {
+      // 1. Save to Supabase database
       await dbService.submitAppointment({
         name: form.name,
         email: form.email,
@@ -71,10 +79,28 @@ export default function Contact() {
         date: form.date,
         message: form.message || undefined
       });
+
+      // 2. Send email notification via SMTP
+      const emailResult = await emailService.sendAppointmentEmail({
+        name: form.name,
+        email: form.email,
+        phone: form.phone,
+        services: form.services,
+        date: form.date,
+        message: form.message || undefined,
+      });
+
+      if (!emailResult.success) {
+        console.warn('Email notification failed:', emailResult.message);
+        // Still show success since the appointment was saved to DB
+      }
+
       setSubmitted(true);
     } catch (err) {
       console.error('Error submitting appointment:', err);
       alert('Failed to submit appointment request. Please try again.');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -200,7 +226,7 @@ export default function Contact() {
                     </div>
                     
                     <div>
-                      <label className="text-sm font-medium text-primary-500 block mb-2">Services Required</label>
+                      <label className="text-sm font-medium text-primary-500 block mb-2">Services Required <span className="text-red-500">*</span></label>
                       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-2 bg-slate-50 p-4 rounded-xl border border-slate-200">
                         {departments.map((d) => (
                           <label key={d} className="flex items-start gap-2 cursor-pointer group p-1.5 hover:bg-white rounded-lg transition-colors">
@@ -255,9 +281,18 @@ export default function Contact() {
                         placeholder="Tell us about your symptoms or concerns..."
                       />
                     </div>
-                    <button type="submit" className="btn-primary w-full">
-                      <Send className="w-4 h-4" />
-                      Confirm Appointment Request
+                    <button type="submit" className="btn-primary w-full" disabled={loading}>
+                      {loading ? (
+                        <>
+                          <Loader2 className="w-4 h-4 animate-spin" />
+                          Submitting...
+                        </>
+                      ) : (
+                        <>
+                          <Send className="w-4 h-4" />
+                          Confirm Appointment Request
+                        </>
+                      )}
                     </button>
                     <p className="text-xs text-slate-brand text-center">
                       By submitting, you agree to our privacy policy. We never share your data.
