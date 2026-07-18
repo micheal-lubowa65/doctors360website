@@ -91,14 +91,13 @@ export default function Contact() {
       });
 
       if (!emailResult.success) {
-        console.warn('Email notification failed:', emailResult.message);
-        // Still show success since the appointment was saved to DB
+        throw new Error(emailResult.message || 'The appointment was saved, but the email notification failed.');
       }
 
       setSubmitted(true);
     } catch (err) {
       console.error('Error submitting appointment:', err);
-      alert('Failed to submit appointment request. Please try again.');
+      alert(err instanceof Error ? err.message : 'Failed to submit appointment request. Please try again.');
     } finally {
       setLoading(false);
     }
