@@ -170,6 +170,7 @@ export default async function handler(req, res) {
   }
 
   const siteUrl = (process.env.SITE_URL || 'http://localhost:5173').replace(/\/$/, '');
+  console.log('[newsletter] SITE_URL:', process.env.SITE_URL, '-> resolved:', siteUrl);
 
   try {
     const supabase = getSupabaseAdmin();
