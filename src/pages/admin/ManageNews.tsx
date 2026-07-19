@@ -1,9 +1,10 @@
-import { AlertCircle, Loader, Edit2, Trash2, X, Plus, Upload, Calendar, Eye, Search } from 'lucide-react';
+import { AlertCircle, Loader, Edit2, Trash2, X, Plus, Upload, Calendar, Eye, Search, Mail } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { supabase } from '../../lib/supabaseClient';
 import { logActivity } from '../../lib/logger';
 import { dbService, Article } from '../../services/dbService';
 import { getSouthSudanDate } from '../../lib/dateTime';
+import { emailService } from '../../services/emailService';
 
 
 export default function ManageNews() {
@@ -20,7 +21,6 @@ export default function ManageNews() {
   const [excerpt, setExcerpt] = useState('');
   const [content, setContent] = useState('');
   const [readTime, setReadTime] = useState('5 min read');
-  const [author, setAuthor] = useState('');
   const [imageUrl, setImageUrl] = useState('');
   const [date, setDate] = useState(getSouthSudanDate());
   const [isVisible, setIsVisible] = useState(true);
@@ -28,6 +28,7 @@ export default function ManageNews() {
   // Upload state
   const [uploading, setUploading] = useState(false);
   const [uploadError, setUploadError] = useState<string | null>(null);
+  const [sendingId, setSendingId] = useState<string | null>(null);
 
   const categories = [
     'Community Health',
@@ -110,7 +111,6 @@ export default function ManageNews() {
     setExcerpt('');
     setContent('');
     setReadTime('5 min read');
-    setAuthor('');
     setImageUrl('');
     setDate(getSouthSudanDate());
     setIsVisible(true);
@@ -125,7 +125,6 @@ export default function ManageNews() {
     setExcerpt(article.excerpt);
     setContent(article.content);
     setReadTime(article.read_time);
-    setAuthor(article.author);
     setImageUrl(article.image_url);
     setDate(article.date);
     setIsVisible(article.is_visible ?? true);
@@ -147,7 +146,7 @@ export default function ManageNews() {
       content,
       read_time: readTime,
       image_url: imageUrl,
-      author,
+      author: 'Doctors360',
       date,
       is_visible: isVisible
     };
@@ -188,6 +187,28 @@ export default function ManageNews() {
     } catch (err: any) {
       console.error('Delete failed:', err);
       alert(err.message || 'Failed to delete article.');
+    }
+  };
+
+  const handleSendNewsletter = async (article: Article) => {
+    if (article.is_visible === false) {
+      alert('Only published stories can be sent to subscribers.');
+      return;
+    }
+
+    if (!confirm(`Send "${article.title}" to all active newsletter subscribers?`)) return;
+
+    setSendingId(article.id);
+    try {
+      const result = await emailService.sendNewsletter(article.id);
+      if (result.success) {
+        logActivity('SEND', 'NEWSLETTER', `Sent newsletter for: ${article.title}`);
+        alert(result.message || `Newsletter sent to ${result.sent ?? 0} subscribers.`);
+      } else {
+        alert(result.message || 'Failed to send newsletter.');
+      }
+    } finally {
+      setSendingId(null);
     }
   };
 
@@ -274,6 +295,18 @@ export default function ManageNews() {
                       >
                         <Eye className="w-4 h-4" />
                       </a>
+                      <button
+                        onClick={() => handleSendNewsletter(b)}
+                        disabled={b.is_visible === false || sendingId === b.id}
+                        className="p-2 rounded-lg bg-blue-500/10 hover:bg-blue-500/20 text-blue-400 transition-all disabled:opacity-40 disabled:cursor-not-allowed"
+                        title="Send Newsletter"
+                      >
+                        {sendingId === b.id ? (
+                          <Loader className="w-4 h-4 animate-spin" />
+                        ) : (
+                          <Mail className="w-4 h-4" />
+                        )}
+                      </button>
                       <button 
                         onClick={() => handleOpenEdit(b)}
                         className="p-2 rounded-lg bg-teal-500/10 hover:bg-teal-500/20 text-teal-400 transition-all"
@@ -355,14 +388,12 @@ export default function ManageNews() {
                   </select>
                 </div>
                 <div>
-                  <label className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Author Name</label>
+                  <label className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Author</label>
                   <input 
                     type="text" 
-                    required 
-                    value={author} 
-                    onChange={(e) => setAuthor(e.target.value)}
-                    placeholder="e.g. Dr. Sarah Machar"
-                    className="mt-1 w-full px-4 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-sm text-white focus:border-teal-500 outline-none transition-all"
+                    value="Doctors360" 
+                    disabled
+                    className="mt-1 w-full px-4 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-sm text-slate-400 cursor-not-allowed"
                   />
                 </div>
                 <div>

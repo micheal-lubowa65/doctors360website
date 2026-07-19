@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate, Link, Routes, Route, useLocation } from 'react-router-dom';
 import { supabase } from '../../lib/supabaseClient';
 
-import { Loader, LayoutDashboard, Users, X, Menu, LogOut, User, UserPlus, Activity, FileText, Globe, Image, Calendar } from 'lucide-react';
+import { Loader, LayoutDashboard, Users, X, Menu, LogOut, User, UserPlus, Activity, FileText, Globe, Image, Calendar, Mail } from 'lucide-react';
 
 import AdminDashboard from './AdminDashboard';
 import ManageNews from './ManageNews';
@@ -13,6 +13,7 @@ import ViewSubmissions from './ViewSubmissions';
 import Profile from './Profile';
 import AddUser from './AddUser';
 import ActivityLogs from './ActivityLogs';
+import ManageSubscribers from './ManageSubscribers';
 
 export default function AdminLayout() {
   const [session, setSession] = useState<any>(null);
@@ -62,6 +63,7 @@ export default function AdminLayout() {
   const menuItems = [
     { name: 'Overview', path: '/admin', icon: LayoutDashboard },
     { name: 'Stories & Blogs', path: '/admin/news', icon: FileText },
+    { name: 'Subscribers', path: '/admin/subscribers', icon: Mail },
     { name: 'Testimonials', path: '/admin/testimonials', icon: Users },
     { name: 'NGO Programs', path: '/admin/programs', icon: Globe },
     { name: 'Gallery', path: '/admin/gallery', icon: Image },
@@ -152,6 +154,7 @@ export default function AdminLayout() {
         <Routes>
           <Route path="/" element={<AdminDashboard />} />
           <Route path="/news" element={<ManageNews />} />
+          <Route path="/subscribers" element={<ManageSubscribers />} />
           <Route path="/testimonials" element={<ManageTestimonials />} />
           <Route path="/programs" element={<ManagePrograms />} />
           <Route path="/gallery" element={<ManageGallery />} />

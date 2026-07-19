@@ -20,6 +20,7 @@ import NewsPage from './pages/NewsPage';
 import ArticlePage from './pages/ArticlePage';
 import GalleryPage from './pages/GalleryPage';
 import DonatePage from './pages/DonatePage';
+import UnsubscribePage from './pages/UnsubscribePage';
 
 // Admin pages
 import AdminLogin from './pages/admin/AdminLogin';
@@ -77,6 +78,7 @@ function AppShell() {
         <Route path="/news/:slug" element={<ArticlePage />} />
         <Route path="/gallery" element={<GalleryPage />} />
         <Route path="/donate" element={<DonatePage />} />
+        <Route path="/unsubscribe" element={<UnsubscribePage />} />
       </Routes>
       <Footer />
     </div>
