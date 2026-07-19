@@ -1,6 +1,32 @@
 import nodemailer from 'nodemailer';
+import { readFileSync, existsSync } from 'fs';
+import { join } from 'path';
 
 const SOUTH_SUDAN_TIME_ZONE = 'Africa/Juba';
+
+function loadDotEnv() {
+  try {
+    const envPath = join(process.cwd(), '.env');
+    if (!existsSync(envPath)) return {};
+    const env = {};
+    readFileSync(envPath, 'utf8').split('\n').forEach((line) => {
+      const trimmed = line.trim();
+      if (!trimmed || trimmed.startsWith('#')) return;
+      const idx = trimmed.indexOf('=');
+      if (idx === -1) return;
+      env[trimmed.slice(0, idx).trim()] = trimmed.slice(idx + 1).trim();
+    });
+    return env;
+  } catch {
+    return {};
+  }
+}
+
+const dotEnv = loadDotEnv();
+
+function getEnv(key, fallback) {
+  return process.env[key] || dotEnv[key] || fallback;
+}
 
 function escapeHtml(str) {
   if (!str) return '';
@@ -37,15 +63,15 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'Preferred date must be today or a future date in South Sudan.' });
   }
 
-  const recipient = process.env.SMTP_RECIPIENT || 'info@doctors360.org';
+  const recipient = getEnv('SMTP_RECIPIENT', 'info@doctors360.org');
 
   const transporter = nodemailer.createTransport({
-    host: process.env.SMTP_SERVER,
-    port: parseInt(process.env.SMTP_PORT || '465', 10),
-    secure: (process.env.SMTP_PROTOCOL || 'SSL').toUpperCase() === 'SSL',
+    host: getEnv('SMTP_SERVER'),
+    port: parseInt(getEnv('SMTP_PORT', '465'), 10),
+    secure: (getEnv('SMTP_PROTOCOL', 'SSL')).toUpperCase() === 'SSL',
     auth: {
-      user: process.env.SMTP_USERNAME,
-      pass: process.env.SMTP_PASSWORD,
+      user: getEnv('SMTP_USERNAME'),
+      pass: getEnv('SMTP_PASSWORD'),
     },
     tls: {
       rejectUnauthorized: false,
@@ -207,7 +233,7 @@ Doctors360 Appointment System
 
   try {
     await transporter.sendMail({
-      from: `"${process.env.SMTP_NAME || 'Doctors360'}" <${process.env.SMTP_EMAIL || process.env.SMTP_USERNAME}>`,
+      from: `"${getEnv('SMTP_NAME', 'Doctors360')}" <${getEnv('SMTP_EMAIL') || getEnv('SMTP_USERNAME')}>`,
       to: recipient,
       replyTo: email,
       subject: `New Appointment Request — ${name} (${servicesFormatted})`,

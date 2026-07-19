@@ -5,6 +5,32 @@ import { join, extname } from 'path';
 
 const SOUTH_SUDAN_TIME_ZONE = 'Africa/Juba';
 
+function loadDotEnv() {
+  try {
+    const envPath = join(process.cwd(), '.env');
+    if (!existsSync(envPath)) return {};
+    const env = {};
+    readFileSync(envPath, 'utf8').split('\n').forEach((line) => {
+      const trimmed = line.trim();
+      if (!trimmed || trimmed.startsWith('#')) return;
+      const idx = trimmed.indexOf('=');
+      if (idx === -1) return;
+      const key = trimmed.slice(0, idx).trim();
+      const value = trimmed.slice(idx + 1).trim();
+      env[key] = value;
+    });
+    return env;
+  } catch {
+    return {};
+  }
+}
+
+const dotEnv = loadDotEnv();
+
+function getEnv(key, fallback) {
+  return process.env[key] || dotEnv[key] || fallback;
+}
+
 function escapeHtml(str) {
   if (!str) return '';
   return String(str)
@@ -52,12 +78,12 @@ async function fetchImageAttachment(imageUrl, cid) {
 
 function createTransporter() {
   return nodemailer.createTransport({
-    host: process.env.SMTP_SERVER,
-    port: parseInt(process.env.SMTP_PORT || '465', 10),
-    secure: (process.env.SMTP_PROTOCOL || 'SSL').toUpperCase() === 'SSL',
+    host: getEnv('SMTP_SERVER'),
+    port: parseInt(getEnv('SMTP_PORT', '465'), 10),
+    secure: (getEnv('SMTP_PROTOCOL', 'SSL')).toUpperCase() === 'SSL',
     auth: {
-      user: process.env.SMTP_USERNAME,
-      pass: process.env.SMTP_PASSWORD,
+      user: getEnv('SMTP_USERNAME'),
+      pass: getEnv('SMTP_PASSWORD'),
     },
     tls: {
       rejectUnauthorized: false,
@@ -66,8 +92,8 @@ function createTransporter() {
 }
 
 function getSupabaseAdmin() {
-  const url = process.env.VITE_SUPABASE_URL || process.env.SUPABASE_URL;
-  const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  const url = getEnv('VITE_SUPABASE_URL') || getEnv('SUPABASE_URL');
+  const serviceKey = getEnv('SUPABASE_SERVICE_ROLE_KEY');
 
   if (!url || !serviceKey) {
     throw new Error('Missing VITE_SUPABASE_URL/SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY');
@@ -169,8 +195,7 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'Missing articleId' });
   }
 
-  const siteUrl = (process.env.SITE_URL || 'http://localhost:5173').replace(/\/$/, '');
-  console.log('[newsletter] SITE_URL:', process.env.SITE_URL, '-> resolved:', siteUrl);
+  const siteUrl = (getEnv('SITE_URL', 'http://localhost:5173')).replace(/\/$/, '');
 
   try {
     const supabase = getSupabaseAdmin();
@@ -210,7 +235,7 @@ export default async function handler(req, res) {
     const attachments = [imageAttachment, logoAttachment].filter(Boolean);
 
     const transporter = createTransporter();
-    const fromAddress = `"${process.env.SMTP_NAME || 'Doctors360'}" <${process.env.SMTP_EMAIL || process.env.SMTP_USERNAME}>`;
+    const fromAddress = `"${getEnv('SMTP_NAME', 'Doctors360')}" <${getEnv('SMTP_EMAIL') || getEnv('SMTP_USERNAME')}>`;
     const subject = `New from Doctors360: ${article.title}`;
 
     let sent = 0;
