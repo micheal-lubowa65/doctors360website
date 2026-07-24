@@ -1,43 +1,43 @@
-import { Microscope, Stethoscope, ShieldPlus, ClipboardCheck, ArrowRight } from 'lucide-react';
+import { HeartPulse, UserRound, Syringe, Smile, ArrowRight } from 'lucide-react';
 
 import ScrollReveal from '../components/ScrollReveal';
 
 const services = [
   {
-    icon: ShieldPlus,
-    title: 'Prevention & Wellness',
-    text: 'Annual check-ups, vaccinations, lifestyle counseling, and preventive screenings to keep you ahead of illness.',
-    points: ['Health risk assessments', 'Vaccination programs', 'Nutrition counseling'],
+    icon: HeartPulse,
+    title: 'Reproductive Health',
+    text: 'Comprehensive reproductive healthcare services including family planning, prenatal and postnatal care, and sexual health education.',
+    points: ['Family planning counseling', 'Prenatal & postnatal care', 'Sexual health screening'],
+    accent: 'from-rose-50 to-pink-100/40',
+    iconBg: 'bg-rose-100 text-rose-600',
+    dot: 'bg-rose-400',
+  },
+  {
+    icon: UserRound,
+    title: "Men's Health",
+    text: 'Dedicated men\'s health services addressing the unique medical needs of men at every stage of life.',
+    points: ['Prostate health screening', 'Hormonal health assessment', 'Lifestyle & wellness coaching'],
+    accent: 'from-blue-50 to-indigo-100/40',
+    iconBg: 'bg-blue-100 text-blue-600',
+    dot: 'bg-blue-400',
+  },
+  {
+    icon: Syringe,
+    title: 'Vaccination Clinic',
+    text: 'Up-to-date immunisation services for children and adults, following WHO and national guidelines.',
+    points: ['Childhood vaccination programs', 'Adult & travel vaccines', 'Catch-up immunisation schedules'],
     accent: 'from-seafoam-100 to-teal-light/20',
     iconBg: 'bg-seafoam-100 text-teal-deep',
     dot: 'bg-seafoam-300',
   },
   {
-    icon: Microscope,
-    title: 'Advanced Diagnostics',
-    text: 'State-of-the-art imaging and lab services delivering fast, accurate results you can trust.',
-    points: ['Expanding diagnostic capacity including imaging and lab services as we grow across South Sudan and Uganda.'],
-    accent: 'from-teal-light/20 to-seafoam-100',
-    iconBg: 'bg-teal-light/20 text-teal-deep',
-    dot: 'bg-teal-light',
-  },
-  {
-    icon: Stethoscope,
-    title: 'Treatment & Therapy',
-    text: 'Personalized care plans delivered by a dedicated multidisciplinary team, using evidence-based approaches suited to the communities we serve.',
-    points: ['Chronic disease management', 'Minor surgical procedures', 'Physical therapy & rehabilitation', "We're working to expand our surgical and specialist capacity as we grow across South Sudan and Uganda."],
-    accent: 'from-coral/10 to-coral-light/10',
-    iconBg: 'bg-coral/10 text-coral',
-    dot: 'bg-coral-light',
-  },
-  {
-    icon: ClipboardCheck,
-    title: 'Follow-up & Recovery',
-    text: "We stay connected with our patients after treatment, checking in to make sure recovery stays on track and care doesn't stop at the clinic door.",
-    points: ['Patient follow-up visits', 'Progress check-ins', 'Referrals for continued care'],
-    accent: 'from-slate-100 to-slate-warm/20',
-    iconBg: 'bg-slate-100 text-slate-brand',
-    dot: 'bg-slate-warm',
+    icon: Smile,
+    title: 'Dental',
+    text: 'Professional dental care covering preventive, restorative, and cosmetic dentistry for the whole family.',
+    points: ['Routine check-ups & cleaning', 'Fillings & extractions', 'Oral health education'],
+    accent: 'from-amber-50 to-yellow-100/40',
+    iconBg: 'bg-amber-100 text-amber-600',
+    dot: 'bg-amber-400',
   },
 ];
 

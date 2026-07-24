@@ -71,7 +71,6 @@ export default function Testimonials() {
                 />
                 <div>
                   <p className="font-semibold text-primary-500">{testimonials[index].name}</p>
-                  <p className="text-sm text-slate-brand">{testimonials[index].role}</p>
                 </div>
               </div>
             </div>

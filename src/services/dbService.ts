@@ -137,16 +137,16 @@ export const dbService = {
   },
 
   // 5. Submit Donation
-  async submitDonation(donation: DonationSubmission): Promise<any> {
-    const { data, error } = await supabase.from('donations').insert([donation]).select();
+  async submitDonation(donation: DonationSubmission): Promise<void> {
+    // No .select() — anon can INSERT but has no SELECT RLS policy (needed for RETURNING).
+    const { error } = await supabase.from('donations').insert([donation]);
     if (error) throw error;
-    return data;
   },
 
   // 6. Submit Appointment Request
-  async submitAppointment(appointment: AppointmentSubmission): Promise<any> {
-    const { data, error } = await supabase.from('requested_appointments').insert([appointment]).select();
+  async submitAppointment(appointment: AppointmentSubmission): Promise<void> {
+    // No .select() — anon can INSERT but has no SELECT RLS policy (needed for RETURNING).
+    const { error } = await supabase.from('requested_appointments').insert([appointment]);
     if (error) throw error;
-    return data;
   }
 };

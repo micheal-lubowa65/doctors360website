@@ -20,11 +20,11 @@ const pillars = [
 ];
 
 const values = [
-  { icon: Shield, label: 'Trust & Integrity', color: 'text-blue-600', bg: 'bg-blue-100', hoverBg: 'group-hover:bg-blue-500', hoverText: 'group-hover:text-white', border: 'hover:border-blue-200' },
-  { icon: Smartphone, label: 'Accessibility & Convenience', color: 'text-emerald-600', bg: 'bg-emerald-100', hoverBg: 'group-hover:bg-emerald-500', hoverText: 'group-hover:text-white', border: 'hover:border-emerald-200' },
-  { icon: Zap, label: 'Innovation & Technology', color: 'text-amber-500', bg: 'bg-amber-100', hoverBg: 'group-hover:bg-amber-500', hoverText: 'group-hover:text-white', border: 'hover:border-amber-200' },
-  { icon: HeartHandshake, label: 'Patient-Centered Care', color: 'text-rose-500', bg: 'bg-rose-100', hoverBg: 'group-hover:bg-rose-500', hoverText: 'group-hover:text-white', border: 'hover:border-rose-200' },
-  { icon: Users, label: 'Community & National Health', color: 'text-purple-600', bg: 'bg-purple-100', hoverBg: 'group-hover:bg-purple-500', hoverText: 'group-hover:text-white', border: 'hover:border-purple-200' },
+  { icon: Shield, label: 'Trust & Integrity', desc: 'Transparent, ethical care you can rely on.', color: 'text-blue-600', bg: 'bg-blue-100', hoverBg: 'group-hover:bg-blue-500', hoverText: 'group-hover:text-white', border: 'hover:border-blue-200' },
+  { icon: Smartphone, label: 'Accessibility & Convenience', desc: 'Quality healthcare within easy reach.', color: 'text-emerald-600', bg: 'bg-emerald-100', hoverBg: 'group-hover:bg-emerald-500', hoverText: 'group-hover:text-white', border: 'hover:border-emerald-200' },
+  { icon: Zap, label: 'Innovation & Technology', desc: 'Modern tools for faster, better outcomes.', color: 'text-amber-500', bg: 'bg-amber-100', hoverBg: 'group-hover:bg-amber-500', hoverText: 'group-hover:text-white', border: 'hover:border-amber-200' },
+  { icon: HeartHandshake, label: 'Patient-Centered Care', desc: 'Every decision is made with you in mind.', color: 'text-rose-500', bg: 'bg-rose-100', hoverBg: 'group-hover:bg-rose-500', hoverText: 'group-hover:text-white', border: 'hover:border-rose-200' },
+  { icon: Users, label: 'Community & National Health', desc: 'Strengthening health across the nation.', color: 'text-purple-600', bg: 'bg-purple-100', hoverBg: 'group-hover:bg-purple-500', hoverText: 'group-hover:text-white', border: 'hover:border-purple-200' },
 ];
 
 export default function About() {
@@ -107,25 +107,30 @@ export default function About() {
             ))}
           </div>
 
-          {/* Brand Values */}
-          <ScrollReveal animation="fade-up" delay={650}>
-            <div className="mt-8">
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-teal-deep mb-3">Our Values</p>
-              <div className="flex flex-wrap gap-2">
-                {values.map((v) => (
-                  <span
-                    key={v.label}
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-seafoam-50 text-teal-deep text-xs font-semibold border border-seafoam-100 hover:bg-seafoam-100 transition-colors"
-                  >
-                    <v.icon className="w-3.5 h-3.5" />
-                    {v.label}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </ScrollReveal>
         </div>
       </div>
+
+      {/* Brand Values — Full-width centered */}
+      <ScrollReveal animation="fade-up" delay={650}>
+        <div className="container-x mt-14 text-center">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-teal-deep mb-6">Our Values</p>
+          <div className="flex flex-wrap justify-center gap-4">
+            {values.map((v, i) => (
+              <div
+                key={v.label}
+                className={`group w-48 rounded-2xl p-5 border ${v.border} bg-white shadow-sm hover:shadow-xl transition-all duration-400 hover:-translate-y-1 cursor-default text-center`}
+                style={{ animationDelay: `${i * 80}ms` }}
+              >
+                <span className={`inline-flex items-center justify-center w-12 h-12 rounded-xl ${v.bg} ${v.color} ${v.hoverBg} ${v.hoverText} mb-3 transition-all duration-300 group-hover:scale-110 group-hover:-rotate-3`}>
+                  <v.icon className="w-6 h-6" />
+                </span>
+                <h4 className="text-sm font-bold text-primary-500 leading-snug">{v.label}</h4>
+                <p className="mt-1.5 text-[11px] text-slate-brand leading-relaxed">{v.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </ScrollReveal>
     </section>
   );
 }

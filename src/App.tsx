@@ -9,9 +9,9 @@ import Hero from './sections/Hero';
 import About from './sections/About';
 import Services from './sections/Services';
 import WhyChooseUs from './sections/WhyChooseUs';
-import Departments from './sections/Departments';
 import Testimonials from './sections/Testimonials';
 import Contact from './sections/Contact';
+import InsurancePartners from './sections/InsurancePartners';
 import NewsPreview from './components/NewsPreview';
 import FAQ, { faqJsonLd } from './sections/FAQ';
 
@@ -22,6 +22,7 @@ import NewsPage from './pages/NewsPage';
 import ArticlePage from './pages/ArticlePage';
 import GalleryPage from './pages/GalleryPage';
 import DonatePage from './pages/DonatePage';
+import UnsubscribePage from './pages/UnsubscribePage';
 
 // Admin pages
 import AdminLogin from './pages/admin/AdminLogin';
@@ -40,8 +41,8 @@ function HomePage() {
       <About />
       <Services />
       <WhyChooseUs />
-      <Departments />
       <Testimonials />
+      <InsurancePartners />
       <NewsPreview />
       <FAQ />
       <Contact />
@@ -87,6 +88,7 @@ function AppShell() {
         <Route path="/news/:slug" element={<ArticlePage />} />
         <Route path="/gallery" element={<GalleryPage />} />
         <Route path="/donate" element={<DonatePage />} />
+        <Route path="/unsubscribe" element={<UnsubscribePage />} />
       </Routes>
       <Footer />
     </div>

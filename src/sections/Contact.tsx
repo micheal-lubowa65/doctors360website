@@ -1,26 +1,28 @@
-import { MapPin, Phone, Mail, Navigation, CheckCircle2, Clock, CalendarCheck, Send } from 'lucide-react';
+import { MapPin, Phone, Mail, Navigation, CheckCircle2, Clock, CalendarCheck, Send, Loader2 } from 'lucide-react';
 import { useState } from 'react';
 
 import ScrollReveal from '../components/ScrollReveal';
+import PhoneCountryInput, { DEFAULT_COUNTRY } from '../components/PhoneCountryInput';
 import { dbService } from '../services/dbService';
+import { emailService } from '../services/emailService';
+import { formatIntlPhone, type CountryCode } from '../data/countryCodes';
+import { getSouthSudanDate } from '../lib/dateTime';
 import { MapContainer, TileLayer, Marker } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
 const contactInfo = [
   { icon: MapPin, label: 'Visit Us', value: 'Juba, South Sudan — serving patients across Africa' },
-  { icon: Phone, label: 'Call Us', value: '+211 927 702 808' },
-  { icon: Mail, label: 'Email Us', value: 'care@doctors360.com' },
+  { icon: Phone, label: 'Call Us', value: '+211 927 702 808 / +211 924 574 088' },
+  { icon: Mail, label: 'Email Us', value: 'reception.doctors360@gmail.com' },
   { icon: Clock, label: 'Open Hours', value: 'Mon–Sat: 8:00 AM – 10:00 PM' },
 ];
 
 const departments = [
-  'General Medicine', 'Emergency Care', 'Cardiology', 'Pediatrics',
-  'Obstetrics & Gynecology', 'Orthopedics', 'Mental Health', 'Dermatology',
-  'Ophthalmology', 'Pharmacy Services', 'Laboratory Services', 'Radiology',
+  'Reproductive Health', "Men's Health", 'Vaccination Clinic', 'Dental',
 ];
 
-const position: [number, number] = [4.859363, 31.57125];
+const position: [number, number] = [4.8599618, 31.5978874];
 
 const customIcon = L.divIcon({
   className: 'custom-leaflet-icon',
@@ -36,6 +38,8 @@ const customIcon = L.divIcon({
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [country, setCountry] = useState<CountryCode>(DEFAULT_COUNTRY);
   const [form, setForm] = useState<{
     name: string;
     email: string;
@@ -62,19 +66,52 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (form.services.length === 0) {
+      alert('Please select at least one service.');
+      return;
+    }
+    if (form.phone.length < 4) {
+      alert('Please enter a valid phone number.');
+      return;
+    }
+    if (form.date < getSouthSudanDate()) {
+      alert('Please select today or a future date.');
+      return;
+    }
+
+    const fullPhone = formatIntlPhone(country.dial, form.phone);
+    setLoading(true);
     try {
+      // 1. Save to Supabase database
       await dbService.submitAppointment({
         name: form.name,
         email: form.email,
-        phone: form.phone,
+        phone: fullPhone,
         services: form.services,
         date: form.date,
         message: form.message || undefined
       });
+
+      // 2. Send email notification via SMTP
+      const emailResult = await emailService.sendAppointmentEmail({
+        name: form.name,
+        email: form.email,
+        phone: fullPhone,
+        services: form.services,
+        date: form.date,
+        message: form.message || undefined,
+      });
+
+      if (!emailResult.success) {
+        throw new Error(emailResult.message || 'The appointment was saved, but the email notification failed.');
+      }
+
       setSubmitted(true);
     } catch (err) {
       console.error('Error submitting appointment:', err);
-      alert('Failed to submit appointment request. Please try again.');
+      alert(err instanceof Error ? err.message : 'Failed to submit appointment request. Please try again.');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -132,7 +169,7 @@ export default function Contact() {
               </div>
               <div className="mt-4 flex justify-center lg:justify-center relative z-20">
                 <a
-                  href="https://www.google.com/maps/dir/?api=1&destination=4.859363,31.57125"
+                  href="https://www.google.com/maps/dir/?api=1&destination=Doctors360,Juba,South+Sudan&destination=4.8599618,31.5978874"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-secondary flex items-center gap-2 text-sm"
@@ -188,19 +225,17 @@ export default function Contact() {
                       </div>
                       <div>
                         <label className="text-sm font-medium text-primary-500">Phone</label>
-                        <input
-                          required
-                          name="phone"
-                          value={form.phone}
-                          onChange={handleChange}
-                          className="mt-1 w-full px-4 py-2.5 rounded-xl bg-white border border-slate-200 focus:border-teal-light focus:ring-2 focus:ring-teal-light/20 outline-none transition-all"
-                          placeholder="(555) 123-4567"
+                        <PhoneCountryInput
+                          phone={form.phone}
+                          country={country}
+                          onPhoneChange={(phone) => setForm({ ...form, phone })}
+                          onCountryChange={setCountry}
                         />
                       </div>
                     </div>
                     
                     <div>
-                      <label className="text-sm font-medium text-primary-500 block mb-2">Services Required</label>
+                      <label className="text-sm font-medium text-primary-500 block mb-2">Services Required <span className="text-red-500">*</span></label>
                       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-2 bg-slate-50 p-4 rounded-xl border border-slate-200">
                         {departments.map((d) => (
                           <label key={d} className="flex items-start gap-2 cursor-pointer group p-1.5 hover:bg-white rounded-lg transition-colors">
@@ -239,6 +274,7 @@ export default function Contact() {
                           name="date"
                           value={form.date}
                           onChange={handleChange}
+                          min={getSouthSudanDate()}
                           className="mt-1 w-full px-4 py-2.5 rounded-xl bg-white border border-slate-200 focus:border-teal-light focus:ring-2 focus:ring-teal-light/20 outline-none transition-all"
                         />
                       </div>
@@ -255,9 +291,18 @@ export default function Contact() {
                         placeholder="Tell us about your symptoms or concerns..."
                       />
                     </div>
-                    <button type="submit" className="btn-primary w-full">
-                      <Send className="w-4 h-4" />
-                      Confirm Appointment Request
+                    <button type="submit" className="btn-primary w-full" disabled={loading}>
+                      {loading ? (
+                        <>
+                          <Loader2 className="w-4 h-4 animate-spin" />
+                          Submitting...
+                        </>
+                      ) : (
+                        <>
+                          <Send className="w-4 h-4" />
+                          Confirm Appointment Request
+                        </>
+                      )}
                     </button>
                     <p className="text-xs text-slate-brand text-center">
                       By submitting, you agree to our privacy policy. We never share your data.

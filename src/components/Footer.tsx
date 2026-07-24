@@ -1,5 +1,7 @@
-import { MapPin, Phone, Mail, Send } from 'lucide-react';
+import { MapPin, Phone, Mail, Send, Loader, CheckCircle2, AlertCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { supabase } from '../lib/supabaseClient';
 
 const Facebook = (props: React.SVGProps<SVGSVGElement>) => (
   <svg viewBox="0 0 24 24" fill="currentColor" {...props}><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" /></svg>
@@ -32,11 +34,10 @@ const linkGroups = [
   {
     title: 'Medical Services',
     links: [
-      { label: 'General Medicine', href: '/#departments' },
-      { label: 'Emergency Care', href: '/#departments' },
-      { label: 'Cardiology', href: '/#departments' },
-      { label: 'Pediatrics', href: '/#departments' },
-      { label: 'Obstetrics & Gynecology', href: '/#departments' },
+      { label: 'Reproductive Health', href: '/#services' },
+      { label: "Men's Health", href: '/#services' },
+      { label: 'Vaccination Clinic', href: '/#services' },
+      { label: 'Dental', href: '/#services' },
     ],
   },
   {
@@ -64,6 +65,56 @@ const linkGroups = [
 const socials = [Facebook, Twitter, Instagram, Linkedin, TiktokIcon];
 
 export default function Footer() {
+  const [email, setEmail] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState<string | null>(null);
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError(null);
+    setSuccess(null);
+
+    const normalizedEmail = email.trim().toLowerCase();
+    if (!normalizedEmail || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(normalizedEmail)) {
+      setError('Please enter a valid email address.');
+      return;
+    }
+
+    setLoading(true);
+
+    const { error: insertError } = await supabase
+      .from('subscribers')
+      .insert([{ email: normalizedEmail }]);
+
+    if (!insertError) {
+      setSuccess('Thanks for subscribing! You will receive our latest health updates.');
+      setEmail('');
+      setLoading(false);
+      return;
+    }
+
+    if (insertError.code === '23505') {
+      const newToken = crypto.randomUUID();
+      const { error: resubError, count } = await supabase
+        .from('subscribers')
+        .update({ unsubscribed: false, unsubscribe_token: newToken }, { count: 'exact' })
+        .eq('email', normalizedEmail)
+        .eq('unsubscribed', true);
+
+      if (!resubError && count && count > 0) {
+        setSuccess('Welcome back! You have been re-subscribed to our newsletter.');
+        setEmail('');
+      } else {
+        setError('This email is already subscribed.');
+      }
+    } else {
+      setError(insertError.message || 'Failed to subscribe. Please try again.');
+    }
+
+    setLoading(false);
+  };
+
   return (
     <footer className="bg-primary-700 text-white pt-16 pb-8 relative overflow-hidden">
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-teal-deep/20 rounded-full blur-3xl" />
@@ -100,7 +151,10 @@ export default function Footer() {
                 <Phone className="w-4 h-4 text-seafoam-300 flex-shrink-0" /> +211 927 702 808
               </p>
               <p className="flex items-center gap-2 text-sm text-seafoam-100">
-                <Mail className="w-4 h-4 text-seafoam-300 flex-shrink-0" /> care@doctors360.com
+                <Phone className="w-4 h-4 text-seafoam-300 flex-shrink-0" /> +211 924 574 088
+              </p>
+              <p className="flex items-center gap-2 text-sm text-seafoam-100">
+                <Mail className="w-4 h-4 text-seafoam-300 flex-shrink-0" /> reception.doctors360@gmail.com
               </p>
             </div>
           </div>
@@ -130,19 +184,39 @@ export default function Footer() {
 
         {/* Newsletter */}
         <div className="mt-12 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-6">
-          <div>
+          <div className="flex-1">
             <h4 className="font-semibold text-white">Stay informed</h4>
             <p className="text-sm text-seafoam-100 mt-1">Health tips and updates, straight to your inbox.</p>
+            {success && (
+              <div className="mt-3 flex items-start gap-2 p-3 rounded-xl bg-teal-500/10 border border-teal-500/20 text-teal-100 text-sm">
+                <CheckCircle2 className="w-4 h-4 flex-shrink-0 mt-0.5" />
+                <span>{success}</span>
+              </div>
+            )}
+            {error && (
+              <div className="mt-3 flex items-start gap-2 p-3 rounded-xl bg-red-500/10 border border-red-500/20 text-red-200 text-sm">
+                <AlertCircle className="w-4 h-4 flex-shrink-0 mt-0.5" />
+                <span>{error}</span>
+              </div>
+            )}
           </div>
-          <form className="flex flex-col sm:flex-row gap-2 w-full md:w-auto" onSubmit={(e) => e.preventDefault()}>
+          <form className="flex flex-col sm:flex-row gap-2 w-full md:w-auto" onSubmit={handleSubscribe}>
             <input
               type="email"
               placeholder="Enter your email"
-              className="flex-1 md:w-72 px-5 py-2.5 rounded-full bg-white border border-white/15 text-gray-900 placeholder-gray-500 focus:border-seafoam-300 focus:ring-2 focus:ring-seafoam-300/20 outline-none transition-all"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              disabled={loading}
+              required
+              className="flex-1 md:w-72 px-5 py-2.5 rounded-full bg-white border border-white/15 text-gray-900 placeholder-gray-500 focus:border-seafoam-300 focus:ring-2 focus:ring-seafoam-300/20 outline-none transition-all disabled:opacity-60"
             />
-            <button className="btn-secondary whitespace-nowrap w-full sm:w-auto justify-center">
-              <Send className="w-4 h-4" />
-              Subscribe
+            <button
+              type="submit"
+              disabled={loading}
+              className="btn-secondary whitespace-nowrap w-full sm:w-auto justify-center disabled:opacity-60"
+            >
+              {loading ? <Loader className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4" />}
+              {loading ? 'Subscribing...' : 'Subscribe'}
             </button>
           </form>
         </div>

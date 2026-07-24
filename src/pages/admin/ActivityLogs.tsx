@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { supabase } from '../../lib/supabaseClient';
 import { Activity, Clock, User, Tag, Loader, RefreshCw } from 'lucide-react';
+import { formatSouthSudanDateTime } from '../../lib/dateTime';
 
 interface Log {
   id: string;
@@ -95,7 +96,7 @@ export default function ActivityLogs() {
                     <td className="p-4 whitespace-nowrap">
                       <div className="flex items-center gap-2 text-sm text-slate-300">
                         <Clock className="w-4 h-4 text-slate-500" />
-                        {new Date(log.created_at).toLocaleString()}
+                        {formatSouthSudanDateTime(log.created_at)} (Juba)
                       </div>
                     </td>
                     <td className="p-4 whitespace-nowrap">

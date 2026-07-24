@@ -20,10 +20,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-.env
-.env.*
+
 !.env.example
-*.env
+
 credentials.json
 *.pem
 *.key

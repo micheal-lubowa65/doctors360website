@@ -1,6 +1,7 @@
 import { RefreshCw, Loader, Mail, MessageSquare, Phone, Calendar, Clock } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { supabase } from '../../lib/supabaseClient';
+import { formatSouthSudanDateTime } from '../../lib/dateTime';
 
 
 export default function ViewSubmissions() {
@@ -94,7 +95,7 @@ export default function ViewSubmissions() {
                       <span className="flex items-center gap-1"><Mail className="w-3.5 h-3.5" />{d.email}</span>
                       <span className="flex items-center gap-1">
                         <Clock className="w-3.5 h-3.5" />
-                        {new Date(d.created_at).toLocaleString('en-GB', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' })}
+                        {formatSouthSudanDateTime(d.created_at)} (Juba)
                       </span>
                     </div>
                   </div>
@@ -142,7 +143,7 @@ export default function ViewSubmissions() {
                       <span className="flex items-center gap-1"><Phone className="w-3.5 h-3.5" />{a.phone}</span>
                       <span className="flex items-center gap-1">
                         <Clock className="w-3.5 h-3.5" />
-                        Requested: {new Date(a.created_at).toLocaleString('en-GB', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' })}
+                        Requested: {formatSouthSudanDateTime(a.created_at)} (Juba)
                       </span>
                     </div>
                   </div>
