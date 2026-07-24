@@ -79,7 +79,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-20 lg:py-28 bg-primary-500 relative overflow-hidden noise-overlay">
+    <section id="contact" className="py-20 lg:py-28 bg-primary-500 relative overflow-hidden noise-overlay" aria-label="Contact Doctors360 — Book an appointment, phone, email, and location in Juba, South Sudan">
       <div className="absolute -top-20 -left-20 w-[28rem] h-[28rem] bg-teal-deep/30 rounded-full blur-3xl " />
       <div className="absolute -bottom-20 -right-20 w-96 h-96 bg-seafoam-300/10 rounded-full blur-3xl -alt" />
 

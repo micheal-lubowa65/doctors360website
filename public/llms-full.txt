@@ -1,0 +1,302 @@
+# Doctors360 — Full Content Reference
+# Website: https://www.doctors360.org
+# Last Updated: 2026-07-24
+# This file contains the full-text content of the Doctors360 website for AI model consumption.
+
+---
+
+# HOME PAGE
+
+## Doctors360 — Your Health, 360° Care Without Compromise
+
+Doctors360 is a nonprofit clinic bringing world-class care to communities that need it most — from prevention to recovery.
+
+### Key Statistics
+- 50,000+ patients served since 2019
+- 5 communities reached
+- 30% of care provided free of charge
+- 8 years in operation
+
+### Our Story — Healthcare That Surrounds the Patient
+
+Doctors360 was founded in 2019 in Juba, South Sudan, out of a conviction that no one should be denied quality care because of where they live. We set out to build a model of healthcare that wraps around the patient — prevention, diagnosis, treatment, and follow-up — reaching people both digitally and in person.
+
+What began as a small effort in Juba has since grown into Uganda, as we work alongside trusted healthcare professionals and communities to close gaps in access. Every service we provide is guided by one purpose: making ethical, patient-centred care available to those who need it most, regardless of ability to pay or distance from a clinic.
+
+### Our Mission
+To provide accessible, trusted, and patient-centered healthcare digitally and physically across Africa.
+
+### Our Vision
+A healthy nation where quality healthcare is within reach for everyone.
+
+### Our Purpose
+To make quality, ethical, and patient-centred healthcare accessible through trusted medical professionals and innovative digital solutions.
+
+### Our Values
+- Trust & Integrity
+- Accessibility & Convenience
+- Innovation & Technology
+- Patient-Centered Care
+- Community & National Health
+
+---
+
+## What We Do — Complete Care, Every Step of the Way
+
+Our four-pillar approach ensures your health journey is covered from every angle.
+
+### 1. Prevention & Wellness
+Annual check-ups, vaccinations, lifestyle counseling, and preventive screenings to keep you ahead of illness.
+- Health risk assessments
+- Vaccination programs
+- Nutrition counseling
+
+### 2. Advanced Diagnostics
+State-of-the-art imaging and lab services delivering fast, accurate results you can trust.
+- Expanding diagnostic capacity including imaging and lab services as we grow across South Sudan and Uganda.
+
+### 3. Treatment & Therapy
+Personalized care plans delivered by a dedicated multidisciplinary team, using evidence-based approaches suited to the communities we serve.
+- Chronic disease management
+- Minor surgical procedures
+- Physical therapy & rehabilitation
+- Working to expand surgical and specialist capacity as we grow across South Sudan and Uganda.
+
+### 4. Follow-up & Recovery
+We stay connected with our patients after treatment, checking in to make sure recovery stays on track and care doesn't stop at the clinic door.
+- Patient follow-up visits
+- Progress check-ins
+- Referrals for continued care
+
+---
+
+## Why Doctors360 — The Difference Is in the Details
+
+We have reimagined what healthcare can be when expertise, technology, and genuine compassion come together across Africa.
+
+### 24/7 Availability
+Round-the-clock emergency response and telehealth support — wherever you are across Africa.
+
+### Multidisciplinary Teams
+Trusted specialists across all key disciplines collaborate on your personalised 360 Care plan.
+
+### Patient-Centred Ethics
+Every clinical decision upholds the highest standards of medical ethics, dignity, and transparency.
+
+### Accessible Healthcare
+Both digitally and physically — we bring quality care closer to patients across underserved communities.
+
+### Digital Health Innovation
+Cutting-edge technology powers faster diagnostics, secure records, and seamless patient experiences.
+
+### Trust & Integrity
+Your health data and personal information are handled with the utmost care, security, and respect.
+
+---
+
+## Our Departments — Specialized Care Across Every Field
+
+With 20+ specialties under one roof, you never have to look far for the right expert.
+
+### General Medicine
+Comprehensive primary care for all ages — prevention, diagnosis, and management of everyday health concerns.
+
+### Emergency Care
+Rapid-response emergency services available around the clock, equipped for critical and acute conditions.
+
+### Cardiology
+Comprehensive heart care from prevention and diagnostics to advanced cardiac interventions.
+
+### Pediatrics
+Compassionate, evidence-based care for infants, children, and adolescents across Africa.
+
+### Mental Health
+Holistic mental health services including counselling, therapy, and psychiatric support.
+
+### Orthopedics
+Bone, joint, and musculoskeletal care including trauma management and rehabilitation.
+
+### Ophthalmology
+Full-spectrum eye care — routine checks, surgical correction, and specialised retinal treatment.
+
+### Obstetrics & Gynecology
+Safe motherhood, antenatal care, skilled birth attendance, and women's reproductive health.
+
+### Radiology & Imaging
+Digital X-ray, ultrasound, and advanced imaging to support accurate diagnosis across all departments.
+
+### Laboratory Services
+Accredited diagnostic laboratory providing rapid, reliable results for blood, urine, and pathology tests.
+
+### Pharmacy Services
+In-facility and online pharmacy dispensing prescription and over-the-counter medications safely.
+
+### Dermatology
+Skin, hair, and nail care — treating conditions common across tropical and sub-Saharan climates.
+
+---
+
+## Frequently Asked Questions (FAQ)
+
+### What is Doctors360?
+Doctors360 is an integrated medical services provider and registered NGO based in Juba, South Sudan. Founded in 2019, we provide accessible, ethical, patient-centred healthcare across East Africa through both clinical facilities and community health programs. We have served over 50,000 patients across South Sudan and Uganda.
+
+### Where is Doctors360 located?
+Our main medical centre is located in Juba, South Sudan. We also run community health programs in Uganda. Our coordinates are 4.859363, 31.57125. We are expanding into additional East African countries by 2027.
+
+### What medical services does Doctors360 offer?
+We offer 12 medical specialties: General Medicine, Emergency Care (24/7), Cardiology, Pediatrics, Mental Health, Orthopedics, Ophthalmology, Obstetrics & Gynecology, Radiology & Imaging, Laboratory Services, Pharmacy Services, and Dermatology.
+
+### Is Doctors360 a nonprofit organization?
+Yes. Doctors360 is a registered NGO in South Sudan. We provide 30% of our care free of charge and operate community health programs funded by donors and partnerships with organizations including WHO, UNICEF, and MSF.
+
+### How can I book an appointment with Doctors360?
+You can book an appointment through our website at www.doctors360.org, call us at +211 927 702 808, or email care@doctors360.com. We confirm appointments within 2 hours during business days (Monday–Saturday, 8:00 AM – 10:00 PM).
+
+### Does Doctors360 provide free healthcare?
+Yes. Approximately 30% of all care we provide is free of charge, particularly through our community health outreach programs. We believe no one should be denied quality care because of where they live or their ability to pay.
+
+### What countries does Doctors360 operate in?
+We are currently active in South Sudan (primary operations) and Uganda (community health programs). We are expanding into two additional East African countries by end of 2026.
+
+### How can I donate to or volunteer with Doctors360?
+Visit www.doctors360.org/donate. Donation tiers start at $25 (Community Supporter), $100 (Health Champion), and $500 (Program Partner). Volunteer roles include Medical Volunteer, Training Facilitator, Digital & Tech Support, Communications, Fundraising, and Research. Corporate partnerships are also available.
+
+---
+
+## Contact Information
+
+- Address: Juba, South Sudan — serving patients across Africa
+- Phone: +211 927 702 808
+- Email: care@doctors360.com
+- Hours: Monday–Saturday, 8:00 AM – 10:00 PM
+
+---
+
+# ABOUT PAGE
+
+## Our Story, Our People, Our Purpose
+
+Doctors360 is an integrated medical services provider and registered NGO committed to making quality, ethical, patient-centred healthcare accessible to all — digitally and physically, across Africa.
+
+### Our History — From a Single Vision to a Movement
+
+Founded in 2019, Doctors360 has grown from a small clinic into a multi-service healthcare organisation serving communities across Africa.
+
+Timeline:
+- 2019: Doctors360 founded in Juba, South Sudan
+- 2020: First community health outreach program launched
+- 2021: NGO registration and first international partnership secured
+- 2022: Medical centre expanded — Emergency Department added
+- 2023: Digital health pilot launched; 5,000+ patients served
+- 2024: Regional expansion — programs active in 3 countries
+- 2025: 50,000+ patients served; new laboratory wing opened
+
+### Leadership Team
+
+#### Tenywa Daniel — Founder & Team Lead
+Daniel founded Doctors360 in 2019 in Juba, South Sudan, to make quality healthcare accessible regardless of location. He now leads the organization's growth across South Sudan and Uganda, building partnerships that expand access to care.
+
+#### Funankya Joseph — Co-Founder & Medical Director
+Joseph co-founded Doctors360 and oversees the clinical quality of care across all operations. He ensures every service — from diagnosis to follow-up — meets the highest ethical and medical standards.
+
+#### Niinsima Cathy — Partnerships & Programs Director
+Cathy leads Doctors360's efforts to build partnerships with donors, governments, and communities across South Sudan and Uganda. She oversees program execution, translating the organization's mission into real, measurable impact.
+
+### Board of Directors (Governance)
+Doctors360 is governed by an independent Board of Directors that provides strategic oversight, fiduciary responsibility, and accountability to the communities we serve. All operations adhere to registered NGO compliance requirements.
+
+- Hon. Peter Kolong — Board Chair
+- Dr. Sarah Machar — Vice Chair
+- Beatrice Lam — Board Secretary
+- Simon Taban — Treasurer
+- Prof. David Okello — Independent Member
+- Dr. Fatima Al-Hassan — Independent Member
+
+Registered NGO — South Sudan
+
+### Strategic Objectives (2025–2027)
+
+1. **Expand Access Across Africa** — Establish Doctors360 facilities and digital health services in underserved communities across East and Central Africa by 2027.
+2. **Health Education at Scale** — Train 500+ community health workers annually through our outreach and capacity-building programs.
+3. **Sustainable Healthcare Delivery** — Build financially sustainable models that combine fee-for-service, donor funding, and government partnerships.
+4. **Digital Health Integration** — Launch a fully integrated patient portal, telemedicine service, and laboratory results platform by 2026.
+
+---
+
+# PROGRAMS PAGE
+
+## NGO Programs — Health Without Boundaries
+
+Beyond our medical centre walls, Doctors360 runs a portfolio of community health programs that bring prevention, education, and care directly to the people who need it most.
+
+### Impact Statistics
+- 50,000+ patients served
+- 200+ community health workers trained
+- 12,000+ outreach visits per year
+- 6 counties active
+- 8 active partnerships
+- 3 countries reached
+
+### Geographic Reach
+Programs currently active in:
+- South Sudan — Primary operations
+- Uganda — Community health programs
+Expanding into two additional countries by end of 2026.
+
+### Partners
+- Ministry of Health, South Sudan
+- World Health Organization (WHO)
+- UNICEF South Sudan
+- MSF (Médecins Sans Frontières)
+- African Development Bank
+- German Development Cooperation (GIZ)
+
+---
+
+# DONATE & SUPPORT PAGE
+
+## Your Support Saves Lives Across Africa
+
+Every contribution to Doctors360 directly funds free community clinics, health worker training, emergency care, and life-saving medicines for the most vulnerable.
+
+### Donation Tiers
+- **$25 — Community Supporter**: Provides a malaria rapid test and treatment for one child.
+- **$100 — Health Champion**: Funds a community health education session reaching 30+ families.
+- **$500 — Program Partner**: Trains and equips one community health worker for three months.
+
+### Volunteer Opportunities
+- **Medical Volunteer** (2–4 weeks on-site): Doctors, nurses, and clinical officers — support our medical centre or outreach teams directly in South Sudan.
+- **Training Facilitator** (1–3 weeks on-site or remote): Support the delivery of our community health worker training curriculum.
+- **Digital & Tech Support** (Remote, flexible): Help build our digital health platform, patient management system, website, or data tools.
+- **Communications & Media** (Remote, flexible): Contribute writing, photography, videography, or social media skills.
+- **Fundraising & Partnerships** (Remote, flexible): Help us grow our donor and partner network.
+- **Research & Evaluation** (Remote or on-site): Support monitoring, evaluation, and learning for our programs.
+
+### Corporate Partnership Options
+- Cause-related marketing partnership
+- Employee volunteering programs
+- In-kind equipment or supplies donation
+- Multi-year program sponsorship
+- Employee health education workshops
+- Joint grant applications
+
+---
+
+# NEWS & BLOG
+
+Medical articles, community stories, organisational updates, and health education from the Doctors360 team.
+
+Content categories:
+- Community Health
+- Maternal Health
+- Mental Health
+- Child Health
+- Organisational Update
+- Community Stories
+
+---
+
+# END OF FULL CONTENT
+# Source: Doctors360 — www.doctors360.org
+# For questions about this content, contact: care@doctors360.com

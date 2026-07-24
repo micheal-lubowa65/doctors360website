@@ -13,7 +13,7 @@ const features = [
 
 export default function WhyChooseUs() {
   return (
-    <section className="py-20 lg:py-28 bg-primary-500 relative overflow-hidden noise-overlay">
+    <section className="py-20 lg:py-28 bg-primary-500 relative overflow-hidden noise-overlay" aria-label="Why choose Doctors360 — 24/7 availability, multidisciplinary teams, patient-centred ethics, accessible healthcare, digital innovation, and trust">
       {/* Animated background elements */}
       <div className="absolute top-0 right-0 w-[30rem] h-[30rem] bg-teal-deep/30 rounded-full blur-3xl " />
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-seafoam-300/10 rounded-full blur-3xl -alt" />

@@ -83,6 +83,7 @@ export default function Hero() {
     <section
       id="home"
       className="relative overflow-hidden pt-36 pb-20 lg:pt-44 lg:pb-28 bg-gradient-to-br from-seafoam-50 via-white to-teal-light/10"
+      aria-label="Doctors360 — Nonprofit healthcare clinic providing 360-degree patient care in South Sudan and East Africa"
     >
       {/* Decorative blobs */}
       <div className="absolute -top-32 -right-24 w-[28rem] h-[28rem] bg-seafoam-200/40 rounded-full blur-3xl " />

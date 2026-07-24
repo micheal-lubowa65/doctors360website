@@ -29,7 +29,7 @@ const values = [
 
 export default function About() {
   return (
-    <section id="about" className="py-20 lg:py-28 bg-white relative overflow-hidden">
+    <section id="about" className="py-20 lg:py-28 bg-white relative overflow-hidden" aria-label="About Doctors360 — Our mission, vision, purpose, and values">
       <div className="absolute top-20 right-0 w-72 h-72 bg-seafoam-50 rounded-full blur-3xl opacity-60" />
 
       <div className="container-x relative grid lg:grid-cols-2 gap-14 items-center">

@@ -43,7 +43,7 @@ const services = [
 
 export default function Services() {
   return (
-    <section id="services" className="py-20 lg:py-28 bg-gradient-to-b from-seafoam-50/50 to-white relative overflow-hidden">
+    <section id="services" className="py-20 lg:py-28 bg-gradient-to-b from-seafoam-50/50 to-white relative overflow-hidden" aria-label="Doctors360 Medical Services — Prevention, Diagnostics, Treatment, and Follow-up">
       <div className="absolute top-40 -right-20 w-80 h-80 bg-seafoam-100/40 rounded-full blur-3xl" />
 
       <div className="container-x relative">

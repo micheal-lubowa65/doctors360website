@@ -31,7 +31,7 @@ export default function Navbar() {
 
   return (
     <header className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${navBg}`}>
-      <nav className="container-x flex items-center justify-between">
+      <nav className="container-x flex items-center justify-between" aria-label="Main navigation">
 
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2.5 group flex-shrink-0">

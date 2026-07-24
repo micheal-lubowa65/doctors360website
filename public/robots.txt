@@ -1,0 +1,55 @@
+# https://www.doctors360.org/robots.txt
+# Doctors360 — Nonprofit Healthcare Clinic, Juba, South Sudan
+
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /admin/
+
+# AI Crawlers — explicitly allowed
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: YouBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+# Sitemap
+Sitemap: https://www.doctors360.org/sitemap.xml
+
+# LLM-readable content
+# See https://www.doctors360.org/llms.txt for structured site overview
+# See https://www.doctors360.org/llms-full.txt for full-text content
+# See https://www.doctors360.org/ai.txt for AI usage policy

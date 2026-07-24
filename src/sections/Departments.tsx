@@ -18,7 +18,7 @@ const departments = [
 
 export default function Departments() {
   return (
-    <section id="departments" className="py-20 lg:py-28 bg-slate-50 relative overflow-hidden">
+    <section id="departments" className="py-20 lg:py-28 bg-slate-50 relative overflow-hidden" aria-label="Doctors360 Medical Departments — 12 specialties including General Medicine, Emergency Care, Cardiology, Pediatrics, and more">
       {/* Background decorations */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-seafoam-100/40 rounded-full blur-3xl opacity-60 -translate-y-1/2 translate-x-1/3" />
       <div className="absolute bottom-0 left-0 w-80 h-80 bg-teal-light/20 rounded-full blur-3xl opacity-60 translate-y-1/3 -translate-x-1/4" />

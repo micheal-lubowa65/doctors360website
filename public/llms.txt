@@ -1,0 +1,96 @@
+# Doctors360
+> Nonprofit healthcare clinic and registered NGO based in Juba, South Sudan. Providing accessible, patient-centred healthcare across East Africa since 2019.
+
+## About
+Doctors360 is an integrated medical services provider and registered NGO committed to making quality, ethical, patient-centred healthcare accessible to all — digitally and physically, across Africa. Founded in 2019 in Juba, South Sudan, Doctors360 has served over 50,000 patients across South Sudan and Uganda.
+
+- Website: https://www.doctors360.org
+- Email: care@doctors360.com
+- Phone: +211 927 702 808
+- Location: Juba, South Sudan (4.859363, 31.57125)
+- Hours: Monday–Saturday, 8:00 AM – 10:00 PM
+
+## Mission & Vision
+- Mission: To provide accessible, trusted, and patient-centered healthcare digitally and physically across Africa.
+- Vision: A healthy nation where quality healthcare is within reach for everyone.
+- Purpose: To make quality, ethical, and patient-centred healthcare accessible through trusted medical professionals and innovative digital solutions.
+- Slogan: The Choice of a Healthy Nation
+
+## Pages
+- [Home](https://www.doctors360.org/): Main landing page with overview of services, departments, testimonials, and appointment booking.
+- [About Us](https://www.doctors360.org/about): Organization history, leadership team, governance board, strategic objectives, and timeline.
+- [NGO Programs](https://www.doctors360.org/programs): Community health programs, impact statistics, partnerships, and geographic reach across East Africa.
+- [News & Blog](https://www.doctors360.org/news): Medical articles, community stories, organisational updates, and health education.
+- [Gallery](https://www.doctors360.org/gallery): Photos from community outreach, medical centre, and events.
+- [Donate & Support](https://www.doctors360.org/donate): Donation tiers, volunteer opportunities, corporate partnerships, and support form.
+
+## Medical Departments (12 Specialties)
+- General Medicine — Comprehensive primary care for all ages
+- Emergency Care — 24/7 rapid-response emergency services
+- Cardiology — Heart care from prevention to intervention
+- Pediatrics — Evidence-based care for children and adolescents
+- Mental Health — Counselling, therapy, and psychiatric support
+- Orthopedics — Bone, joint, and musculoskeletal care
+- Ophthalmology — Full-spectrum eye care
+- Obstetrics & Gynecology — Maternal and reproductive health
+- Radiology & Imaging — Digital X-ray, ultrasound, and advanced imaging
+- Laboratory Services — Diagnostic laboratory for blood, urine, and pathology
+- Pharmacy Services — Prescription and over-the-counter medications
+- Dermatology — Skin, hair, and nail care for tropical climates
+
+## Four-Pillar Care Model
+1. Prevention & Wellness — Check-ups, vaccinations, lifestyle counseling, and preventive screenings
+2. Advanced Diagnostics — Imaging and lab services for fast, accurate results
+3. Treatment & Therapy — Personalized care plans by multidisciplinary teams
+4. Follow-up & Recovery — Post-treatment check-ins, progress monitoring, and referrals
+
+## Key Statistics
+- 50,000+ patients served since 2019
+- 200+ community health workers trained
+- 12,000+ outreach visits per year
+- 5 communities reached
+- 30% of care provided free of charge
+- 8 years in operation
+- 6 counties active
+- 3 countries reached (South Sudan, Uganda, expanding)
+- 8 active partnerships
+
+## Leadership
+- Tenywa Daniel — Founder & Team Lead
+- Funankya Joseph — Co-Founder & Medical Director
+- Niinsima Cathy — Partnerships & Programs Director
+
+## Board of Directors
+- Hon. Peter Kolong — Board Chair
+- Dr. Sarah Machar — Vice Chair
+- Beatrice Lam — Board Secretary
+- Simon Taban — Treasurer
+- Prof. David Okello — Independent Member
+- Dr. Fatima Al-Hassan — Independent Member
+
+## Strategic Objectives (2025–2027)
+1. Expand Access Across Africa — Establish facilities and digital health services in underserved communities
+2. Health Education at Scale — Train 500+ community health workers annually
+3. Sustainable Healthcare Delivery — Build financially sustainable models
+4. Digital Health Integration — Launch patient portal, telemedicine, and lab results platform
+
+## Partners
+- Ministry of Health, South Sudan
+- World Health Organization (WHO)
+- UNICEF South Sudan
+- MSF (Médecins Sans Frontières)
+- African Development Bank
+- German Development Cooperation (GIZ)
+
+## Content Categories
+- Community Health
+- Maternal Health
+- Mental Health
+- Child Health
+- Organisational Update
+- Community Stories
+
+## Ways to Support
+- Donate ($25 Community Supporter / $100 Health Champion / $500 Program Partner)
+- Volunteer (Medical, Training, Digital/Tech, Communications, Fundraising, Research)
+- Corporate Partnership (cause marketing, employee volunteering, in-kind donations, sponsorship)

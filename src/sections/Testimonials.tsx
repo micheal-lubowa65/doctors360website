@@ -32,7 +32,7 @@ export default function Testimonials() {
   if (loading || testimonials.length === 0) return null;
 
   return (
-    <section id="testimonials" className="py-20 lg:py-28 bg-gradient-to-b from-white via-seafoam-50/30 to-white relative overflow-hidden">
+    <section id="testimonials" className="py-20 lg:py-28 bg-gradient-to-b from-white via-seafoam-50/30 to-white relative overflow-hidden" aria-label="Patient testimonials and reviews for Doctors360">
       <div className="absolute top-10 right-10 w-72 h-72 bg-seafoam-100/30 rounded-full blur-3xl" />
 
       <div className="container-x relative">
